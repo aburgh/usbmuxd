@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=/usr/local
+libdir=/usr/local/lib
+includedir=/usr/local/include
+
+Name: libusbmuxd
+Description: A library to communicate with the usbmux daemon
+Version: 1.0.0
+Requires: libusb-1.0 >= 1.0.3
+Libs: -L/usr/local/lib -lusbmuxd
+Cflags: -I/usr/local/include
+

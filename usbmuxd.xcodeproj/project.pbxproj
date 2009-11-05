@@ -1,0 +1,1398 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		1007981C01007981C0100798 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 100799AC0100799AC0100799 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				100798500100798500100798 /* CMake ReRun */,
+				100798EC0100798EC0100798 /* CMake Rules */,
+			);
+			dependencies = (
+				1007EE8901007EE8901007EE /* PBXTargetDependency */,
+				1007EF3F01007EF3F01007EF /* PBXTargetDependency */,
+				1007EFF501007EFF501007EF /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		1007A38001007A38001007A3 /* install */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1007A51A01007A51A01007A5 /* Build configuration list for PBXAggregateTarget "install" */;
+			buildPhases = (
+				1007A39F01007A39F01007A3 /* CMake ReRun */,
+				1007A43B01007A43B01007A4 /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				1007F0C201007F0C201007F0 /* PBXTargetDependency */,
+			);
+			name = install;
+			productName = install;
+		};
+		1007AEC001007AEC001007AE /* uninstall */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1007B02401007B02401007B0 /* Build configuration list for PBXAggregateTarget "uninstall" */;
+			buildPhases = (
+				1007AEF401007AEF401007AE /* CMake ReRun */,
+				1007AF8C01007AF8C01007AF /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = uninstall;
+			productName = uninstall;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		1007B98A01007B98A01007B9 /* libusbmuxd.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007B96001007B96001007B9 /* libusbmuxd.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007BA8201007BA8201007BA /* sock_stuff.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BA7001007BA7001007BA /* sock_stuff.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007BB7501007BB7501007BB /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007CBE101007CBE101007CB /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CBD001007CBD001007CB /* main.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007CCD801007CCD801007CC /* usb-linux.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CCC601007CCC601007CC /* usb-linux.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007CDDD01007CDDD01007CD /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CDD101007CDD101007CD /* log.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007CEC501007CEC501007CE /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007CF9B01007CF9B01007CF /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CF7D01007CF7D01007CF /* device.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007D08F01007D08F01007D0 /* client.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007D08301007D08301007D0 /* client.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007DF7901007DF7901007DF /* iproxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007DF5801007DF5801007DF /* iproxy.c */; settings = {COMPILER_FLAGS = ""; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1007EE1301007EE1301007EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 100795A10100795A10100795 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1007E1ED01007E1ED01007E1;
+			remoteInfo = iproxy;
+		};
+		1007EEC901007EEC901007EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 100795A10100795A10100795 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1007BE0701007BE0701007BE;
+			remoteInfo = libusbmuxd;
+		};
+		1007EF8501007EF8501007EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 100795A10100795A10100795 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1007D30901007D30901007D3;
+			remoteInfo = usbmuxd;
+		};
+		1007F03301007F03301007F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 100795A10100795A10100795 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1007981C01007981C0100798;
+			remoteInfo = ALL_BUILD;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1007B96001007B96001007B9 /* libusbmuxd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libusbmuxd.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/libusbmuxd.c; sourceTree = "<absolute>"; };
+		1007BA7001007BA7001007BA /* sock_stuff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sock_stuff.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/sock_stuff.c; sourceTree = "<absolute>"; };
+		1007BB0C01007BB0C01007BB /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = utils.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/common/utils.c; sourceTree = "<absolute>"; };
+		1007CB0801007CB0801007CB /* libusbmuxd.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libusbmuxd.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		1007CBD001007CBD001007CB /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/daemon/main.c; sourceTree = "<absolute>"; };
+		1007CCC601007CCC601007CC /* usb-linux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "usb-linux.c"; path = "/Users/aburgh/Projects/iPhone/usbmuxd/daemon/usb-linux.c"; sourceTree = "<absolute>"; };
+		1007CDD101007CDD101007CD /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = log.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/daemon/log.c; sourceTree = "<absolute>"; };
+		1007CF7D01007CF7D01007CF /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = device.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/daemon/device.c; sourceTree = "<absolute>"; };
+		1007D08301007D08301007D0 /* client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = client.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/daemon/client.c; sourceTree = "<absolute>"; };
+		1007DEBE01007DEBE01007DE /* usbmuxd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = usbmuxd; sourceTree = BUILT_PRODUCTS_DIR; };
+		1007DF5801007DF5801007DF /* iproxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iproxy.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/tools/iproxy.c; sourceTree = "<absolute>"; };
+		1007ED7E01007ED7E01007ED /* iproxy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = iproxy; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1007918E01007918E0100791 = {
+			isa = PBXGroup;
+			children = (
+				100791D40100791D40100791 /* Sources */,
+				100792320100792320100792 /* Resources */,
+				100792840100792840100792 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		100791D40100791D40100791 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				100792B50100792B50100792 /* libusbmuxd */,
+				100793A90100793A90100793 /* usbmuxd */,
+				100794A00100794A00100794 /* iproxy */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		100792320100792320100792 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		100792840100792840100792 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1007CB0801007CB0801007CB /* libusbmuxd.dylib */,
+				1007DEBE01007DEBE01007DE /* usbmuxd */,
+				1007ED7E01007ED7E01007ED /* iproxy */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		100792B50100792B50100792 /* libusbmuxd */ = {
+			isa = PBXGroup;
+			children = (
+				1007932B01007932B0100793 /* Source Files */,
+			);
+			name = libusbmuxd;
+			sourceTree = "<group>";
+		};
+		1007932B01007932B0100793 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				1007B96001007B96001007B9 /* libusbmuxd.c */,
+				1007BA7001007BA7001007BA /* sock_stuff.c */,
+				1007BB0C01007BB0C01007BB /* utils.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		100793A90100793A90100793 /* usbmuxd */ = {
+			isa = PBXGroup;
+			children = (
+				1007940B01007940B0100794 /* Source Files */,
+			);
+			name = usbmuxd;
+			sourceTree = "<group>";
+		};
+		1007940B01007940B0100794 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				1007CBD001007CBD001007CB /* main.c */,
+				1007CCC601007CCC601007CC /* usb-linux.c */,
+				1007CDD101007CDD101007CD /* log.c */,
+				1007BB0C01007BB0C01007BB /* utils.c */,
+				1007CF7D01007CF7D01007CF /* device.c */,
+				1007D08301007D08301007D0 /* client.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		100794A00100794A00100794 /* iproxy */ = {
+			isa = PBXGroup;
+			children = (
+				100795020100795020100795 /* Source Files */,
+			);
+			name = iproxy;
+			sourceTree = "<group>";
+		};
+		100795020100795020100795 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				1007DF5801007DF5801007DF /* iproxy.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1007BE0701007BE0701007BE /* libusbmuxd.dylib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1007BE6401007BE6401007BE /* Build configuration list for PBXNativeTarget "libusbmuxd.dylib" */;
+			buildPhases = (
+				1007BCC801007BCC801007BC /* CMake ReRun */,
+				1007BC6801007BC6801007BC /* Sources */,
+				1007BD5D01007BD5D01007BD /* CMake PostBuild Rules */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libusbmuxd.dylib;
+			productName = libusbmuxd.dylib;
+			productReference = 1007CB0801007CB0801007CB /* libusbmuxd.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		1007D30901007D30901007D3 /* usbmuxd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1007D37A01007D37A01007D3 /* Build configuration list for PBXNativeTarget "usbmuxd" */;
+			buildPhases = (
+				1007D1D501007D1D501007D1 /* CMake ReRun */,
+				1007D17D01007D17D01007D1 /* Sources */,
+				1007D27401007D27401007D2 /* CMake PostBuild Rules */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = usbmuxd;
+			productName = usbmuxd;
+			productReference = 1007DEBE01007DEBE01007DE /* usbmuxd */;
+			productType = "com.apple.product-type.tool";
+		};
+		1007E1ED01007E1ED01007E1 /* iproxy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1007E25F01007E25F01007E2 /* Build configuration list for PBXNativeTarget "iproxy" */;
+			buildPhases = (
+				1007E0B501007E0B501007E0 /* CMake ReRun */,
+				1007E06301007E06301007E0 /* Sources */,
+				1007E15501007E15501007E1 /* CMake PostBuild Rules */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1007EF3F01007EF3F01007EF /* PBXTargetDependency */,
+			);
+			name = iproxy;
+			productName = iproxy;
+			productReference = 1007ED7E01007ED7E01007ED /* iproxy */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		100795A10100795A10100795 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 100796170100796170100796 /* Build configuration list for PBXProject "usbmuxd" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 0;
+			mainGroup = 1007918E01007918E0100791;
+			projectDirPath = "";
+			projectRoot = /Users/aburgh/Projects/iPhone/usbmuxd;
+			targets = (
+				1007981C01007981C0100798 /* ALL_BUILD */,
+				1007A38001007A38001007A3 /* install */,
+				1007AEC001007AEC001007AE /* uninstall */,
+				1007BE0701007BE0701007BE /* libusbmuxd.dylib */,
+				1007D30901007D30901007D3 /* usbmuxd */,
+				1007E1ED01007E1ED01007E1 /* iproxy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		100798500100798500100798 /* CMake ReRun */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake ReRun";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd -f /Users/aburgh/Projects/iPhone/usbmuxd/CMakeScripts/ReRunCMake.make";
+		};
+		100798EC0100798EC0100798 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd -f /Users/aburgh/Projects/iPhone/usbmuxd/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+		};
+		1007A39F01007A39F01007A3 /* CMake ReRun */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake ReRun";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd -f /Users/aburgh/Projects/iPhone/usbmuxd/CMakeScripts/ReRunCMake.make";
+		};
+		1007A43B01007A43B01007A4 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd -f /Users/aburgh/Projects/iPhone/usbmuxd/CMakeScripts/install_postBuildPhase.make$CONFIGURATION all";
+		};
+		1007AEF401007AEF401007AE /* CMake ReRun */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake ReRun";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd -f /Users/aburgh/Projects/iPhone/usbmuxd/CMakeScripts/ReRunCMake.make";
+		};
+		1007AF8C01007AF8C01007AF /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd -f /Users/aburgh/Projects/iPhone/usbmuxd/CMakeScripts/uninstall_cmakeRulesBuildPhase.make$CONFIGURATION all";
+		};
+		1007BCC801007BCC801007BC /* CMake ReRun */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake ReRun";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd -f /Users/aburgh/Projects/iPhone/usbmuxd/CMakeScripts/ReRunCMake.make";
+		};
+		1007BD5D01007BD5D01007BD /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd -f /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/CMakeScripts/libusbmuxd_postBuildPhase.make$CONFIGURATION all";
+		};
+		1007D1D501007D1D501007D1 /* CMake ReRun */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake ReRun";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd -f /Users/aburgh/Projects/iPhone/usbmuxd/CMakeScripts/ReRunCMake.make";
+		};
+		1007D27401007D27401007D2 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd/daemon -f /Users/aburgh/Projects/iPhone/usbmuxd/daemon/CMakeScripts/usbmuxd_postBuildPhase.make$CONFIGURATION all";
+		};
+		1007E0B501007E0B501007E0 /* CMake ReRun */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake ReRun";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd -f /Users/aburgh/Projects/iPhone/usbmuxd/CMakeScripts/ReRunCMake.make";
+		};
+		1007E15501007E15501007E1 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aburgh/Projects/iPhone/usbmuxd/tools -f /Users/aburgh/Projects/iPhone/usbmuxd/tools/CMakeScripts/iproxy_postBuildPhase.make$CONFIGURATION all";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1007BC6801007BC6801007BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1007B98A01007B98A01007B9 /* libusbmuxd.c in Sources */,
+				1007BA8201007BA8201007BA /* sock_stuff.c in Sources */,
+				1007BB7501007BB7501007BB /* utils.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1007D17D01007D17D01007D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1007CBE101007CBE101007CB /* main.c in Sources */,
+				1007CCD801007CCD801007CC /* usb-linux.c in Sources */,
+				1007CDDD01007CDDD01007CD /* log.c in Sources */,
+				1007CEC501007CEC501007CE /* utils.c in Sources */,
+				1007CF9B01007CF9B01007CF /* device.c in Sources */,
+				1007D08F01007D08F01007D0 /* client.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1007E06301007E06301007E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1007DF7901007DF7901007DF /* iproxy.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1007EE8901007EE8901007EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1007E1ED01007E1ED01007E1 /* iproxy */;
+			targetProxy = 1007EE1301007EE1301007EE /* PBXContainerItemProxy */;
+		};
+		1007EF3F01007EF3F01007EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1007BE0701007BE0701007BE /* libusbmuxd.dylib */;
+			targetProxy = 1007EEC901007EEC901007EE /* PBXContainerItemProxy */;
+		};
+		1007EFF501007EFF501007EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1007D30901007D30901007D3 /* usbmuxd */;
+			targetProxy = 1007EF8501007EF8501007EF /* PBXContainerItemProxy */;
+		};
+		1007F0C201007F0C201007F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1007981C01007981C0100798 /* ALL_BUILD */;
+			targetProxy = 1007F03301007F03301007F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		100792ED0100792ED0100792 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		1007964A01007964A0100796 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		100796740100796740100796 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = MinSizeRel;
+		};
+		100796A30100796A30100796 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = RelWithDebInfo;
+		};
+		10079A1E010079A1E010079A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		10079BD7010079BD7010079B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		10079D8A010079D8A010079D /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		10079F43010079F43010079F /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		1007A56301007A56301007A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		1007A72401007A72401007A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		1007A8D501007A8D501007A8 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		1007AA8C01007AA8C01007AA /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		1007B0B201007B0B201007B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = uninstall;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		1007B27B01007B27B01007B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = uninstall;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		1007B42A01007B42A01007B4 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = uninstall;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		1007B5DB01007B5DB01007B5 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = uninstall;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		1007BEBF01007BEBF01007BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'libusbmuxd_EXPORTS'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
+				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/Debug;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = "-fPIC";
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-headerpad_max_install_names",
+					/usr/lib/libpthread.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = usbmuxd;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		1007C11501007C11501007C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'libusbmuxd_EXPORTS'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
+				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/Release;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-fPIC",
+				);
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-headerpad_max_install_names",
+					/usr/lib/libpthread.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = usbmuxd;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		1007C37F01007C37F01007C3 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'libusbmuxd_EXPORTS'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
+				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/MinSizeRel;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-fPIC",
+				);
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-headerpad_max_install_names",
+					/usr/lib/libpthread.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = usbmuxd;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		1007C5EF01007C5EF01007C5 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'libusbmuxd_EXPORTS'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
+				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/RelWithDebInfo;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = "-fPIC";
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-headerpad_max_install_names",
+					/usr/lib/libpthread.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = usbmuxd;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		1007D3D501007D3D501007D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'USBMUXD_DAEMON'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3 = "'USBMUXD_VERSION=\"1.0.0\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/aburgh/Library/Caches/Xcode/Release,
+					/Users/aburgh/Projects/iPhone/usbmuxd/common,
+					/Users/aburgh/Projects/iPhone/usbmuxd/daemon,
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-O2",
+					"-g",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-headerpad_max_install_names",
+					/Users/aburgh/Library/Caches/Xcode/Release/libusb.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = usbmuxd;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/daemon;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		1007D4E601007D4E601007D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'USBMUXD_DAEMON'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3 = "'USBMUXD_VERSION=\"1.0.0\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/aburgh/Library/Caches/Xcode/Release,
+					/Users/aburgh/Projects/iPhone/usbmuxd/common,
+					/Users/aburgh/Projects/iPhone/usbmuxd/daemon,
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-Wall",
+					"-O2",
+					"-g",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-headerpad_max_install_names",
+					/Users/aburgh/Library/Caches/Xcode/Release/libusb.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = usbmuxd;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/daemon;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		1007D6E601007D6E601007D6 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'USBMUXD_DAEMON'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3 = "'USBMUXD_VERSION=\"1.0.0\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/aburgh/Library/Caches/Xcode/Release,
+					/Users/aburgh/Projects/iPhone/usbmuxd/common,
+					/Users/aburgh/Projects/iPhone/usbmuxd/daemon,
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-Wall",
+					"-O2",
+					"-g",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-headerpad_max_install_names",
+					/Users/aburgh/Library/Caches/Xcode/Release/libusb.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = usbmuxd;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/daemon;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		1007D92F01007D92F01007D9 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'USBMUXD_DAEMON'";
+				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3 = "'USBMUXD_VERSION=\"1.0.0\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/aburgh/Library/Caches/Xcode/Release,
+					/Users/aburgh/Projects/iPhone/usbmuxd/common,
+					/Users/aburgh/Projects/iPhone/usbmuxd/daemon,
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-O2",
+					"-g",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-headerpad_max_install_names",
+					/Users/aburgh/Library/Caches/Xcode/Release/libusb.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = usbmuxd;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/daemon;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		1007E2BB01007E2BB01007E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/$(CONFIGURATION)",
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd,
+				);
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-O2",
+					"-g",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-headerpad_max_install_names",
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/Debug/libusbmuxd.dylib,
+					"-lpthread",
+					/usr/lib/libpthread.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = iproxy;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/tools;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		1007E36801007E36801007E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/$(CONFIGURATION)",
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd,
+				);
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-Wall",
+					"-O2",
+					"-g",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-headerpad_max_install_names",
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/Release/libusbmuxd.dylib,
+					"-lpthread",
+					/usr/lib/libpthread.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = iproxy;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/tools;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		1007E70B01007E70B01007E7 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/$(CONFIGURATION)",
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd,
+				);
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-Wall",
+					"-O2",
+					"-g",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-headerpad_max_install_names",
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/MinSizeRel/libusbmuxd.dylib,
+					"-lpthread",
+					/usr/lib/libpthread.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = iproxy;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/tools;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		1007E92201007E92201007E9 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/$(CONFIGURATION)",
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd,
+				);
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-O2",
+					"-g",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-headerpad_max_install_names",
+					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/RelWithDebInfo/libusbmuxd.dylib,
+					"-lpthread",
+					/usr/lib/libpthread.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = iproxy;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/tools;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		100796170100796170100796 /* Build configuration list for PBXProject "usbmuxd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				100792ED0100792ED0100792 /* Debug */,
+				1007964A01007964A0100796 /* Release */,
+				100796740100796740100796 /* MinSizeRel */,
+				100796A30100796A30100796 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		100799AC0100799AC0100799 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10079A1E010079A1E010079A /* Debug */,
+				10079BD7010079BD7010079B /* Release */,
+				10079D8A010079D8A010079D /* MinSizeRel */,
+				10079F43010079F43010079F /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1007A51A01007A51A01007A5 /* Build configuration list for PBXAggregateTarget "install" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1007A56301007A56301007A5 /* Debug */,
+				1007A72401007A72401007A7 /* Release */,
+				1007A8D501007A8D501007A8 /* MinSizeRel */,
+				1007AA8C01007AA8C01007AA /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1007B02401007B02401007B0 /* Build configuration list for PBXAggregateTarget "uninstall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1007B0B201007B0B201007B0 /* Debug */,
+				1007B27B01007B27B01007B2 /* Release */,
+				1007B42A01007B42A01007B4 /* MinSizeRel */,
+				1007B5DB01007B5DB01007B5 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1007BE6401007BE6401007BE /* Build configuration list for PBXNativeTarget "libusbmuxd.dylib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1007BEBF01007BEBF01007BE /* Debug */,
+				1007C11501007C11501007C1 /* Release */,
+				1007C37F01007C37F01007C3 /* MinSizeRel */,
+				1007C5EF01007C5EF01007C5 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1007D37A01007D37A01007D3 /* Build configuration list for PBXNativeTarget "usbmuxd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1007D3D501007D3D501007D3 /* Debug */,
+				1007D4E601007D4E601007D4 /* Release */,
+				1007D6E601007D6E601007D6 /* MinSizeRel */,
+				1007D92F01007D92F01007D9 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1007E25F01007E25F01007E2 /* Build configuration list for PBXNativeTarget "iproxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1007E2BB01007E2BB01007E2 /* Debug */,
+				1007E36801007E36801007E3 /* Release */,
+				1007E70B01007E70B01007E7 /* MinSizeRel */,
+				1007E92201007E92201007E9 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 100795A10100795A10100795 /* Project object */;
+}

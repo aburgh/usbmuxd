@@ -26,8 +26,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <stdint.h>
 #include "utils.h"
 
-#define BULK_IN 0x85
-#define BULK_OUT 0x04
+//#define BULK_IN 0x85
+//#define BULK_OUT 0x04
+#define BULK_IN 0x81
+#define BULK_OUT 0x02
 
 // libusb fragments packets larger than this (usbfs limitation)
 // on input, this creates race conditions and other issues

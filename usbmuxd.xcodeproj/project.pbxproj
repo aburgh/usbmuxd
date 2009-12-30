@@ -60,6 +60,9 @@
 		1007CF9B01007CF9B01007CF /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CF7D01007CF7D01007CF /* device.c */; settings = {COMPILER_FLAGS = ""; }; };
 		1007D08F01007D08F01007D0 /* client.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007D08301007D08301007D0 /* client.c */; settings = {COMPILER_FLAGS = ""; }; };
 		1007DF7901007DF7901007DF /* iproxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007DF5801007DF5801007DF /* iproxy.c */; settings = {COMPILER_FLAGS = ""; }; };
+		964937C410A9AA5300A94795 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964937C310A9AA5300A94795 /* IOKit.framework */; };
+		964937C610A9AA5C00A94795 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964937C510A9AA5C00A94795 /* CoreFoundation.framework */; };
+		9649385710A9C30100A94795 /* libusb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9649384610A9C01700A94795 /* libusb.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,34 @@
 			remoteGlobalIDString = 1007981C01007981C0100798;
 			remoteInfo = ALL_BUILD;
 		};
+		9649384310A9C01700A94795 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 964937A410A8C99200A94795 /* CocoaUSB */;
+			proxyType = 2;
+			remoteGlobalIDString = 960239B410503F7900562D7A;
+			remoteInfo = libusb;
+		};
+		9649384510A9C01700A94795 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 964937A410A8C99200A94795 /* CocoaUSB */;
+			proxyType = 2;
+			remoteGlobalIDString = 96023B341051A30C00562D7A;
+			remoteInfo = libusb.a;
+		};
+		9649384710A9C01700A94795 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 964937A410A8C99200A94795 /* CocoaUSB */;
+			proxyType = 2;
+			remoteGlobalIDString = 96023B05105198C300562D7A;
+			remoteInfo = USB;
+		};
+		96E9CEF710EBC42100FD32B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 964937A410A8C99200A94795 /* CocoaUSB */;
+			proxyType = 1;
+			remoteGlobalIDString = 96023B251051A30C00562D7A /* libusb.a */;
+			remoteInfo = libusb.a;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -106,15 +137,34 @@
 		1007DEBE01007DEBE01007DE /* usbmuxd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = usbmuxd; sourceTree = BUILT_PRODUCTS_DIR; };
 		1007DF5801007DF5801007DF /* iproxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iproxy.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/tools/iproxy.c; sourceTree = "<absolute>"; };
 		1007ED7E01007ED7E01007ED /* iproxy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = iproxy; sourceTree = BUILT_PRODUCTS_DIR; };
+		964937A410A8C99200A94795 /* CocoaUSB */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaUSB; path = /Volumes/cocoausb/CocoaUSB.xcodeproj; sourceTree = "<absolute>"; };
+		964937C310A9AA5300A94795 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		964937C510A9AA5C00A94795 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		964937BF10A9A9F800A94795 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9649385710A9C30100A94795 /* libusb.a in Frameworks */,
+				964937C610A9AA5C00A94795 /* CoreFoundation.framework in Frameworks */,
+				964937C410A9AA5300A94795 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1007918E01007918E0100791 = {
 			isa = PBXGroup;
 			children = (
+				964937A410A8C99200A94795 /* CocoaUSB */,
 				100791D40100791D40100791 /* Sources */,
 				100792320100792320100792 /* Resources */,
 				100792840100792840100792 /* Products */,
+				964937C310A9AA5300A94795 /* IOKit.framework */,
+				964937C510A9AA5C00A94795 /* CoreFoundation.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +250,16 @@
 			name = "Source Files";
 			sourceTree = "<group>";
 		};
+		9649383E10A9C01700A94795 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9649384410A9C01700A94795 /* libusb.dylib */,
+				9649384610A9C01700A94795 /* libusb.a */,
+				9649384810A9C01700A94795 /* USB.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,11 +286,13 @@
 			buildPhases = (
 				1007D1D501007D1D501007D1 /* CMake ReRun */,
 				1007D17D01007D17D01007D1 /* Sources */,
+				964937BF10A9A9F800A94795 /* Frameworks */,
 				1007D27401007D27401007D2 /* CMake PostBuild Rules */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				96E9CEF810EBC42100FD32B9 /* PBXTargetDependency */,
 			);
 			name = usbmuxd;
 			productName = usbmuxd;
@@ -265,7 +327,13 @@
 			hasScannedForEncodings = 0;
 			mainGroup = 1007918E01007918E0100791;
 			projectDirPath = "";
-			projectRoot = /Users/aburgh/Projects/iPhone/usbmuxd;
+			projectReferences = (
+				{
+					ProductGroup = 9649383E10A9C01700A94795 /* Products */;
+					ProjectRef = 964937A410A8C99200A94795 /* CocoaUSB */;
+				},
+			);
+			projectRoot = "";
 			targets = (
 				1007981C01007981C0100798 /* ALL_BUILD */,
 				1007A38001007A38001007A3 /* install */,
@@ -276,6 +344,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9649384410A9C01700A94795 /* libusb.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libusb.dylib;
+			remoteRef = 9649384310A9C01700A94795 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9649384610A9C01700A94795 /* libusb.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libusb.a;
+			remoteRef = 9649384510A9C01700A94795 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9649384810A9C01700A94795 /* USB.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = USB.framework;
+			remoteRef = 9649384710A9C01700A94795 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		100798500100798500100798 /* CMake ReRun */ = {
@@ -455,30 +547,41 @@
 			target = 1007981C01007981C0100798 /* ALL_BUILD */;
 			targetProxy = 1007F03301007F03301007F0 /* PBXContainerItemProxy */;
 		};
+		96E9CEF810EBC42100FD32B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libusb.a;
+			targetProxy = 96E9CEF710EBC42100FD32B9 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		100792ED0100792ED0100792 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Debug;
 		};
 		1007964A01007964A0100796 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Release;
 		};
 		100796740100796740100796 /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = MinSizeRel;
 		};
 		100796A30100796A30100796 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = RelWithDebInfo;
 		};
@@ -789,6 +892,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
 				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/Debug;
+				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = DYNAMIC;
 				MACH_O_TYPE = mh_dylib;
@@ -802,7 +906,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -831,6 +934,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
 				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/Release;
+				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = DYNAMIC;
 				MACH_O_TYPE = mh_dylib;
@@ -847,7 +951,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -876,6 +979,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
 				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/MinSizeRel;
+				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = DYNAMIC;
 				MACH_O_TYPE = mh_dylib;
@@ -892,7 +996,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -921,6 +1024,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
 				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/RelWithDebInfo;
+				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = DYNAMIC;
 				MACH_O_TYPE = mh_dylib;
@@ -934,7 +1038,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -973,17 +1076,16 @@
 					"-Wall",
 					"-O2",
 					"-g",
+					"-DRESTORED",
 				);
 				OTHER_LDFLAGS = (
 					"-Wl,-search_paths_first",
 					"-headerpad_max_install_names",
-					/Users/aburgh/Library/Caches/Xcode/Release/libusb.dylib,
 				);
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/daemon;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1023,17 +1125,16 @@
 					"-Wall",
 					"-O2",
 					"-g",
+					"-DRESTORED",
 				);
 				OTHER_LDFLAGS = (
 					"-Wl,-search_paths_first",
 					"-headerpad_max_install_names",
-					/Users/aburgh/Library/Caches/Xcode/Release/libusb.dylib,
 				);
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/daemon;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1083,7 +1184,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/daemon;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1132,7 +1232,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/daemon;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1174,7 +1273,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = iproxy;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/tools;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1217,7 +1315,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = iproxy;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/tools;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1260,7 +1357,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = iproxy;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/tools;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1302,7 +1398,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = iproxy;
 				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/aburgh/Projects/iPhone/usbmuxd/tools;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",

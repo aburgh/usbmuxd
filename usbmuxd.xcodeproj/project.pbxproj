@@ -119,7 +119,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 964937A410A8C99200A94795 /* CocoaUSB */;
 			proxyType = 1;
-			remoteGlobalIDString = 96023B251051A30C00562D7A /* libusb.a */;
+			remoteGlobalIDString = 96023B251051A30C00562D7A;
 			remoteInfo = libusb.a;
 		};
 /* End PBXContainerItemProxy section */
@@ -134,7 +134,7 @@
 		1007CDD101007CDD101007CD /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = log.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/daemon/log.c; sourceTree = "<absolute>"; };
 		1007CF7D01007CF7D01007CF /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = device.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/daemon/device.c; sourceTree = "<absolute>"; };
 		1007D08301007D08301007D0 /* client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = client.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/daemon/client.c; sourceTree = "<absolute>"; };
-		1007DEBE01007DEBE01007DE /* usbmuxd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = usbmuxd; sourceTree = BUILT_PRODUCTS_DIR; };
+		1007DEBE01007DEBE01007DE /* usbmuxd-iphat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = "usbmuxd-iphat"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1007DF5801007DF5801007DF /* iproxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iproxy.c; path = /Users/aburgh/Projects/iPhone/usbmuxd/tools/iproxy.c; sourceTree = "<absolute>"; };
 		1007ED7E01007ED7E01007ED /* iproxy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = iproxy; sourceTree = BUILT_PRODUCTS_DIR; };
 		964937A410A8C99200A94795 /* CocoaUSB */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaUSB; path = /Volumes/cocoausb/CocoaUSB.xcodeproj; sourceTree = "<absolute>"; };
@@ -189,7 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				1007CB0801007CB0801007CB /* libusbmuxd.dylib */,
-				1007DEBE01007DEBE01007DE /* usbmuxd */,
+				1007DEBE01007DEBE01007DE /* usbmuxd-iphat */,
 				1007ED7E01007ED7E01007ED /* iproxy */,
 			);
 			name = Products;
@@ -296,7 +296,7 @@
 			);
 			name = usbmuxd;
 			productName = usbmuxd;
-			productReference = 1007DEBE01007DEBE01007DE /* usbmuxd */;
+			productReference = 1007DEBE01007DEBE01007DE /* usbmuxd-iphat */;
 			productType = "com.apple.product-type.tool";
 		};
 		1007E1ED01007E1ED01007E1 /* iproxy */ = {
@@ -1084,7 +1084,7 @@
 				);
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
-				PRODUCT_NAME = usbmuxd;
+				PRODUCT_NAME = "usbmuxd-iphat";
 				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
@@ -1133,7 +1133,7 @@
 				);
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
-				PRODUCT_NAME = usbmuxd;
+				PRODUCT_NAME = "usbmuxd-iphat";
 				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
@@ -1182,7 +1182,7 @@
 				);
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
-				PRODUCT_NAME = usbmuxd;
+				PRODUCT_NAME = "usbmuxd-iphat";
 				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
@@ -1230,7 +1230,7 @@
 				);
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
-				PRODUCT_NAME = usbmuxd;
+				PRODUCT_NAME = "usbmuxd-iphat";
 				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (

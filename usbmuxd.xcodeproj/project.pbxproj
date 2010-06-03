@@ -13,9 +13,10 @@
 			buildPhases = (
 			);
 			dependencies = (
-				1007EE8901007EE8901007EE /* PBXTargetDependency */,
+				96ED2EFE11B83E24003ED904 /* PBXTargetDependency */,
 				1007EF3F01007EF3F01007EF /* PBXTargetDependency */,
 				1007EFF501007EFF501007EF /* PBXTargetDependency */,
+				1007EE8901007EE8901007EE /* PBXTargetDependency */,
 			);
 			name = All;
 			productName = ALL_BUILD;
@@ -38,6 +39,10 @@
 		96BB1DBC11B5F8C10008D267 /* libusb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9668BA8A11B5A2820092355D /* libusb.a */; };
 		96BB1EB911B5FAB00008D267 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96BB1ECC11B601910008D267 /* libusbmuxd.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1007CB0801007CB0801007CB /* libusbmuxd.dylib */; };
+		96ED2EE611B83BF3003ED904 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96ED2EE811B83BF3003ED904 /* libusbmuxd.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007B96001007B96001007B9 /* libusbmuxd.c */; settings = {COMPILER_FLAGS = ""; }; };
+		96ED2EE911B83BF3003ED904 /* sock_stuff.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BA7001007BA7001007BA /* sock_stuff.c */; settings = {COMPILER_FLAGS = ""; }; };
+		96ED2EEA11B83BF3003ED904 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; settings = {COMPILER_FLAGS = ""; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,8 +92,15 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 964937A410A8C99200A94795 /* CocoaUSB */;
 			proxyType = 1;
-			remoteGlobalIDString = 96023B251051A30C00562D7A /* libusb.a */;
+			remoteGlobalIDString = 96023B251051A30C00562D7A;
 			remoteInfo = libusb.a;
+		};
+		96ED2EFD11B83E24003ED904 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 100795A10100795A10100795 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96ED2EE411B83BF3003ED904 /* libusbmuxd.a */;
+			remoteInfo = libusbmuxd.a;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -109,6 +121,7 @@
 		964937C310A9AA5300A94795 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		964937C510A9AA5C00A94795 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		96BB1EB811B5FAB00008D267 /* usbmuxd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = usbmuxd.h; path = libusbmuxd/usbmuxd.h; sourceTree = "<group>"; };
+		96ED2EF011B83BF3003ED904 /* libusbmuxd.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libusbmuxd.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +180,7 @@
 				1007CB0801007CB0801007CB /* libusbmuxd.dylib */,
 				1007DEBE01007DEBE01007DE /* usbmuxd */,
 				1007ED7E01007ED7E01007ED /* iproxy */,
+				96ED2EF011B83BF3003ED904 /* libusbmuxd.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -257,6 +271,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96ED2EE511B83BF3003ED904 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96ED2EE611B83BF3003ED904 /* usbmuxd.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -310,6 +332,22 @@
 			productReference = 1007ED7E01007ED7E01007ED /* iproxy */;
 			productType = "com.apple.product-type.tool";
 		};
+		96ED2EE411B83BF3003ED904 /* libusbmuxd.a */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96ED2EEB11B83BF3003ED904 /* Build configuration list for PBXNativeTarget "libusbmuxd.a" */;
+			buildPhases = (
+				96ED2EE511B83BF3003ED904 /* Headers */,
+				96ED2EE711B83BF3003ED904 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libusbmuxd.a;
+			productName = libusbmuxd.dylib;
+			productReference = 96ED2EF011B83BF3003ED904 /* libusbmuxd.a */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -329,6 +367,7 @@
 			projectRoot = /Users/aburgh/Projects/iPhone/usbmuxd;
 			targets = (
 				1007981C01007981C0100798 /* All */,
+				96ED2EE411B83BF3003ED904 /* libusbmuxd.a */,
 				1007BE0701007BE0701007BE /* libusbmuxd.dylib */,
 				1007D30901007D30901007D3 /* usbmuxd */,
 				1007E1ED01007E1ED01007E1 /* iproxy */,
@@ -392,6 +431,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96ED2EE711B83BF3003ED904 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96ED2EE811B83BF3003ED904 /* libusbmuxd.c in Sources */,
+				96ED2EE911B83BF3003ED904 /* sock_stuff.c in Sources */,
+				96ED2EEA11B83BF3003ED904 /* utils.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -414,6 +463,11 @@
 			isa = PBXTargetDependency;
 			name = libusb.a;
 			targetProxy = 96BB1DBA11B5F8A10008D267 /* PBXContainerItemProxy */;
+		};
+		96ED2EFE11B83E24003ED904 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 96ED2EE411B83BF3003ED904 /* libusbmuxd.a */;
+			targetProxy = 96ED2EFD11B83E24003ED904 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -440,41 +494,10 @@
 			};
 			name = Release;
 		};
-		100796740100796740100796 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_MODEL_TUNING = G5;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				SDKROOT = macosx10.6;
-			};
-			name = MinSizeRel;
-		};
-		100796A30100796A30100796 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_MODEL_TUNING = G5;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				SDKROOT = macosx10.6;
-			};
-			name = RelWithDebInfo;
-		};
 		10079A1E010079A1E010079A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -487,18 +510,7 @@
 		10079BD7010079BD7010079B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -508,83 +520,21 @@
 			};
 			name = Release;
 		};
-		10079D8A010079D8A010079D /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = MinSizeRel;
-		};
-		10079F43010079F43010079F /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = RelWithDebInfo;
-		};
 		1007BEBF01007BEBF01007BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
 				DYLIB_CURRENT_VERSION = 1.0.0;
 				EXECUTABLE_PREFIX = lib;
-				EXECUTABLE_SUFFIX = .dylib;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'libusbmuxd_EXPORTS'";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/common";
 				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/Debug;
 				LIBRARY_SEARCH_PATHS = "";
-				LIBRARY_STYLE = DYNAMIC;
 				MACH_O_TYPE = mh_dylib;
-				OTHER_CFLAGS = "-fPIC";
-				OTHER_LDFLAGS = (
-					"-dynamiclib",
-					"-headerpad_max_install_names",
-					/usr/lib/libpthread.dylib,
-				);
-				OTHER_REZFLAGS = "";
+				OTHER_LDFLAGS = "-headerpad_max_install_names";
 				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
@@ -603,32 +553,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
 				DYLIB_CURRENT_VERSION = 1.0.0;
 				EXECUTABLE_PREFIX = lib;
-				EXECUTABLE_SUFFIX = .dylib;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'libusbmuxd_EXPORTS'";
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/common";
 				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/Release;
 				LIBRARY_SEARCH_PATHS = "";
-				LIBRARY_STYLE = DYNAMIC;
 				MACH_O_TYPE = mh_dylib;
-				OTHER_CFLAGS = (
-					"-DNDEBUG",
-					"-fPIC",
-				);
-				OTHER_LDFLAGS = (
-					"-dynamiclib",
-					"-headerpad_max_install_names",
-					/usr/lib/libpthread.dylib,
-				);
-				OTHER_REZFLAGS = "";
+				OTHER_CFLAGS = "-DNDEBUG";
+				OTHER_LDFLAGS = "-headerpad_max_install_names";
 				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
@@ -640,91 +574,6 @@
 				);
 			};
 			name = Release;
-		};
-		1007C37F01007C37F01007C3 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
-				DYLIB_CURRENT_VERSION = 1.0.0;
-				EXECUTABLE_PREFIX = lib;
-				EXECUTABLE_SUFFIX = .dylib;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'libusbmuxd_EXPORTS'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
-				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/MinSizeRel;
-				LIBRARY_SEARCH_PATHS = "";
-				LIBRARY_STYLE = DYNAMIC;
-				MACH_O_TYPE = mh_dylib;
-				OTHER_CFLAGS = (
-					"-DNDEBUG",
-					"-fPIC",
-				);
-				OTHER_LDFLAGS = (
-					"-dynamiclib",
-					"-headerpad_max_install_names",
-					/usr/lib/libpthread.dylib,
-				);
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = usbmuxd;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = MinSizeRel;
-		};
-		1007C5EF01007C5EF01007C5 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
-				DYLIB_CURRENT_VERSION = 1.0.0;
-				EXECUTABLE_PREFIX = lib;
-				EXECUTABLE_SUFFIX = .dylib;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1 = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'libusbmuxd_EXPORTS'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = /Users/aburgh/Projects/iPhone/usbmuxd/common;
-				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/RelWithDebInfo;
-				LIBRARY_SEARCH_PATHS = "";
-				LIBRARY_STYLE = DYNAMIC;
-				MACH_O_TYPE = mh_dylib;
-				OTHER_CFLAGS = "-fPIC";
-				OTHER_LDFLAGS = (
-					"-dynamiclib",
-					"-headerpad_max_install_names",
-					/usr/lib/libpthread.dylib,
-				);
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = usbmuxd;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = RelWithDebInfo;
 		};
 		1007D3D501007D3D501007D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -792,78 +641,6 @@
 			};
 			name = Release;
 		};
-		1007D6E601007D6E601007D6 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'USBMUXD_DAEMON'";
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3 = "'USBMUXD_VERSION=\"1.0.0\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/common",
-					"$(SRCROOT)/daemon",
-					"$(SRCROOT)/libusbmuxd",
-					"$(CONFIGURATION_BUILD_DIR)/usr/local/include",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-headerpad_max_install_names",
-					/Users/aburgh/Library/Caches/Xcode/Release/libusb.dylib,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = usbmuxd;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = MinSizeRel;
-		};
-		1007D92F01007D92F01007D9 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_1)",
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'USBMUXD_DAEMON'";
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3 = "'USBMUXD_VERSION=\"1.0.0\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/common",
-					"$(SRCROOT)/daemon",
-					"$(SRCROOT)/libusbmuxd",
-					"$(CONFIGURATION_BUILD_DIR)/usr/local/include",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-headerpad_max_install_names",
-					/Users/aburgh/Library/Caches/Xcode/Release/libusb.dylib,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = usbmuxd;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = RelWithDebInfo;
-		};
 		1007E2BB01007E2BB01007E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -909,49 +686,23 @@
 			};
 			name = Release;
 		};
-		1007E70B01007E70B01007E7 /* MinSizeRel */ = {
+		96ED2EEC11B83BF3003ED904 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-headerpad_max_install_names",
-					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/MinSizeRel/libusbmuxd.dylib,
-					"-lpthread",
-					/usr/lib/libpthread.dylib,
-				);
-				PRODUCT_NAME = iproxy;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libusbmuxd";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = MinSizeRel;
-		};
-		1007E92201007E92201007E9 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)\"'";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-headerpad_max_install_names",
-					/Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/RelWithDebInfo/libusbmuxd.dylib,
-					"-lpthread",
-					/usr/lib/libpthread.dylib,
-				);
-				PRODUCT_NAME = iproxy;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libusbmuxd";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/common";
+				INSTALL_PATH = /Users/aburgh/Projects/iPhone/usbmuxd/libusbmuxd/Debug;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "-headerpad_max_install_names";
+				PREBINDING = NO;
+				PRODUCT_NAME = usbmuxd;
+				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -959,7 +710,33 @@
 					"-Wno-unknown-pragmas",
 				);
 			};
-			name = RelWithDebInfo;
+			name = Debug;
+		};
+		96ED2EED11B83BF3003ED904 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/common";
+				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-DNDEBUG";
+				OTHER_LDFLAGS = "-headerpad_max_install_names";
+				PREBINDING = NO;
+				PRODUCT_NAME = usbmuxd;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -969,8 +746,6 @@
 			buildConfigurations = (
 				100792ED0100792ED0100792 /* Debug */,
 				1007964A01007964A0100796 /* Release */,
-				100796740100796740100796 /* MinSizeRel */,
-				100796A30100796A30100796 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -980,8 +755,6 @@
 			buildConfigurations = (
 				10079A1E010079A1E010079A /* Debug */,
 				10079BD7010079BD7010079B /* Release */,
-				10079D8A010079D8A010079D /* MinSizeRel */,
-				10079F43010079F43010079F /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -991,8 +764,6 @@
 			buildConfigurations = (
 				1007BEBF01007BEBF01007BE /* Debug */,
 				1007C11501007C11501007C1 /* Release */,
-				1007C37F01007C37F01007C3 /* MinSizeRel */,
-				1007C5EF01007C5EF01007C5 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -1002,8 +773,6 @@
 			buildConfigurations = (
 				1007D3D501007D3D501007D3 /* Debug */,
 				1007D4E601007D4E601007D4 /* Release */,
-				1007D6E601007D6E601007D6 /* MinSizeRel */,
-				1007D92F01007D92F01007D9 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -1013,8 +782,15 @@
 			buildConfigurations = (
 				1007E2BB01007E2BB01007E2 /* Debug */,
 				1007E36801007E36801007E3 /* Release */,
-				1007E70B01007E70B01007E7 /* MinSizeRel */,
-				1007E92201007E92201007E9 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		96ED2EEB11B83BF3003ED904 /* Build configuration list for PBXNativeTarget "libusbmuxd.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96ED2EEC11B83BF3003ED904 /* Debug */,
+				96ED2EED11B83BF3003ED904 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

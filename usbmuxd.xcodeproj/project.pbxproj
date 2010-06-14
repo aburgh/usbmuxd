@@ -114,7 +114,7 @@
 		1007CDD101007CDD101007CD /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = log.c; path = daemon/log.c; sourceTree = "<group>"; };
 		1007CF7D01007CF7D01007CF /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = device.c; path = daemon/device.c; sourceTree = "<group>"; };
 		1007D08301007D08301007D0 /* client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = client.c; path = daemon/client.c; sourceTree = "<group>"; };
-		1007DEBE01007DEBE01007DE /* usbmuxd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = usbmuxd; sourceTree = BUILT_PRODUCTS_DIR; };
+		1007DEBE01007DEBE01007DE /* usbmuxd-iphat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = "usbmuxd-iphat"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1007DF5801007DF5801007DF /* iproxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iproxy.c; path = tools/iproxy.c; sourceTree = "<group>"; };
 		1007ED7E01007ED7E01007ED /* iproxy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = iproxy; sourceTree = BUILT_PRODUCTS_DIR; };
 		964937A410A8C99200A94795 /* CocoaUSB */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaUSB; path = ../CocoaUSB/CocoaUSB.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -178,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				1007CB0801007CB0801007CB /* libusbmuxd.dylib */,
-				1007DEBE01007DEBE01007DE /* usbmuxd */,
+				1007DEBE01007DEBE01007DE /* usbmuxd-iphat */,
 				1007ED7E01007ED7E01007ED /* iproxy */,
 				96ED2EF011B83BF3003ED904 /* libusbmuxd.a */,
 			);
@@ -314,7 +314,7 @@
 			);
 			name = usbmuxd;
 			productName = usbmuxd;
-			productReference = 1007DEBE01007DEBE01007DE /* usbmuxd */;
+			productReference = 1007DEBE01007DEBE01007DE /* usbmuxd-iphat */;
 			productType = "com.apple.product-type.tool";
 		};
 		1007E1ED01007E1ED01007E1 /* iproxy */ = {
@@ -600,7 +600,7 @@
 					"-Wl,-search_paths_first",
 					"-headerpad_max_install_names",
 				);
-				PRODUCT_NAME = usbmuxd;
+				PRODUCT_NAME = "usbmuxd-iphat";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -633,7 +633,7 @@
 					"-Wl,-search_paths_first",
 					"-headerpad_max_install_names",
 				);
-				PRODUCT_NAME = usbmuxd;
+				PRODUCT_NAME = "usbmuxd-iphat";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",

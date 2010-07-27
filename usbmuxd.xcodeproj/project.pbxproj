@@ -154,6 +154,8 @@
 				100792320100792320100792 /* Resources */,
 				96BB1DDA11B5FA3B0008D267 /* Linked Libraries and Frameworks */,
 				100792840100792840100792 /* Products */,
+				964937C310A9AA5300A94795 /* IOKit.framework */,
+				964937C510A9AA5C00A94795 /* CoreFoundation.framework */,
 			);
 			sourceTree = "<group>";
 		};

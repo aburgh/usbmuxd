@@ -4,3 +4,4 @@ build
 Debug
 *.pbxuser
 *.perspectivev3
+xcuserdata

@@ -402,7 +402,36 @@ plist_t plist_get_parent(plist_t node)
  */
 plist_type plist_get_node_type(plist_t node)
 {
-	assert("Not Implemented" == NULL);
+	CFTypeID type = CFGetTypeID(node);
+
+	if (type == CFArrayGetTypeID())
+		return PLIST_ARRAY;
+
+	else if (type == CFDictionaryGetTypeID())
+		return PLIST_DICT;
+
+	else if (type == CFStringGetTypeID())
+		return PLIST_STRING;
+
+	else if (type == CFDataGetTypeID())
+		return PLIST_DATA;
+
+	else if (type == CFBooleanGetTypeID())
+		return PLIST_BOOLEAN;
+
+	else if (type == CFNumberGetTypeID()) {
+
+		CFTypeID numType = CFNumberGetType(node);
+		if ( numType == kCFNumberDoubleType)
+			return PLIST_REAL;
+
+		else if (numType == kCFNumberLongType || numType == kCFNumberLongLongType)
+			return PLIST_UINT;
+
+		else
+			return PLIST_NONE;
+	}
+	return PLIST_NONE;
 }
 
 /**

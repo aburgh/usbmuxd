@@ -576,7 +576,7 @@ void device_data_input(struct usb_device *usbdev, unsigned char *buffer, uint32_
 		}
 		memcpy(dev->pktbuf + dev->pktlen, buffer, length);
 		struct mux_header *mhdr = (struct mux_header *)dev->pktbuf;
-		if((length < USB_MRU) || (ntohl(mhdr->length) == length)) {
+		if((length < USB_MRU) || (ntohl(mhdr->length) == (length + dev->pktlen))) {
 			buffer = dev->pktbuf;
 			length += dev->pktlen;
 			dev->pktlen = 0;
@@ -650,7 +650,7 @@ int device_add(struct usb_device *usbdev)
 	vh.minor = htonl(0);
 	vh.padding = 0;
 	if((res = send_packet(dev, MUX_PROTO_VERSION, &vh, NULL, 0)) < 0) {
-		usbmuxd_log(LL_ERROR, "Error sending version request packet to device %d\n", id);
+		usbmuxd_log(LL_ERROR, "Error sending version request packet to device %d", id);
 		free(dev);
 		return res;
 	}

@@ -28,10 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <stdint.h>
 #define USBMUXD_PROTOCOL_VERSION 0
 
-#ifdef WIN32
+#if defined(WIN32) || defined(__CYGWIN__)
 #define USBMUXD_SOCKET_PORT 27015
 #else
 #define USBMUXD_SOCKET_FILE "/var/run/usbmuxd"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 enum usbmuxd_result {
@@ -85,5 +89,9 @@ struct usbmuxd_device_record {
 	uint16_t padding;
 	uint32_t location;
 } __attribute__((__packed__));
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __USBMUXD_PROTO_H */

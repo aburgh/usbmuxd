@@ -375,6 +375,9 @@
 /* Begin PBXProject section */
 		100795A10100795A10100795 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
 			buildConfigurationList = 100796170100796170100796 /* Build configuration list for PBXProject "usbmuxd" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -508,6 +511,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx10.6;
@@ -520,6 +524,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_MODEL_TUNING = G5;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx10.6;
 			};
@@ -566,7 +571,6 @@
 				LIBRARY_SEARCH_PATHS = "";
 				MACH_O_TYPE = mh_dylib;
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
-				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
@@ -594,7 +598,6 @@
 				MACH_O_TYPE = mh_dylib;
 				OTHER_CFLAGS = "-DNDEBUG";
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
-				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
@@ -735,7 +738,6 @@
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/common";
 				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
-				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
@@ -762,7 +764,6 @@
 				MACH_O_TYPE = staticlib;
 				OTHER_CFLAGS = "-DNDEBUG";
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
-				PREBINDING = NO;
 				PRODUCT_NAME = usbmuxd;
 				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;

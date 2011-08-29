@@ -747,6 +747,7 @@ void plist_from_bin(const char *plist_bin, uint32_t length, plist_t * plist)
 plist_t plist_access_path(plist_t plist, uint32_t length, ...)
 {
 	assert("Not Implemented" == NULL);
+	return NULL;
 }
 
 /**
@@ -760,6 +761,7 @@ plist_t plist_access_path(plist_t plist, uint32_t length, ...)
 plist_t plist_access_pathv(plist_t plist, uint32_t length, va_list v)
 {
 	assert("Not Implemented" == NULL);
+	return NULL;
 }
 
 /**
@@ -772,6 +774,7 @@ plist_t plist_access_pathv(plist_t plist, uint32_t length, va_list v)
 char plist_compare_node_value(plist_t node_l, plist_t node_r)
 {
 	assert("Not Implemented" == NULL);
+	return NULL;
 }
 
 /*@}*/

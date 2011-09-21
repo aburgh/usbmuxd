@@ -392,6 +392,7 @@ void plist_dict_remove_item(plist_t node, const char* key)
 plist_t plist_get_parent(plist_t node)
 {
 	assert("Not Implemented" == NULL);
+	return NULL;
 }
 
 /**
@@ -774,7 +775,7 @@ plist_t plist_access_pathv(plist_t plist, uint32_t length, va_list v)
 char plist_compare_node_value(plist_t node_l, plist_t node_r)
 {
 	assert("Not Implemented" == NULL);
-	return NULL;
+	return 0;
 }
 
 /*@}*/

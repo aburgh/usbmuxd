@@ -376,7 +376,7 @@
 		100795A10100795A10100795 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = 100796170100796170100796 /* Build configuration list for PBXProject "usbmuxd" */;
 			compatibilityVersion = "Xcode 3.2";

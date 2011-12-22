@@ -43,9 +43,9 @@
 		969B5093129CAD9A006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
 		969B5094129CADA8006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
 		96BB1DBC11B5F8C10008D267 /* libusb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9668BA8A11B5A2820092355D /* libusb.a */; };
-		96BB1EB911B5FAB00008D267 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96BB1EB911B5FAB00008D267 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (); }; };
 		96BB1ECC11B601910008D267 /* libusbmuxd.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1007CB0801007CB0801007CB /* libusbmuxd.dylib */; };
-		96ED2EE611B83BF3003ED904 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96ED2EE611B83BF3003ED904 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (); }; };
 		96ED2EE811B83BF3003ED904 /* libusbmuxd.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007B96001007B96001007B9 /* libusbmuxd.c */; settings = {COMPILER_FLAGS = ""; }; };
 		96ED2EE911B83BF3003ED904 /* sock_stuff.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BA7001007BA7001007BA /* sock_stuff.c */; settings = {COMPILER_FLAGS = ""; }; };
 /* End PBXBuildFile section */
@@ -296,8 +296,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96ED2EE611B83BF3003ED904 /* usbmuxd.h in Headers */,
 				969B5090129CAD23006DDD4D /* plist.h in Headers */,
+				96ED2EE611B83BF3003ED904 /* usbmuxd.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +514,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx10.6;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -525,6 +526,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx10.6;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};

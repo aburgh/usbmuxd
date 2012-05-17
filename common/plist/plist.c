@@ -341,6 +341,7 @@ void plist_dict_set_item(plist_t node, const char* key, plist_t item)
 	if (keyRef) {
 		CFDictionarySetValue((CFMutableDictionaryRef) node, keyRef, item);
 		CFRelease(keyRef);
+		CFRelease(item);
 	}
 }
 
@@ -358,6 +359,7 @@ void plist_dict_insert_item(plist_t node, const char* key, plist_t item)
 		assert(CFDictionaryGetValue(node, keyRef) == NULL);
 		CFDictionarySetValue((CFMutableDictionaryRef) node, keyRef, item);
 		CFRelease(keyRef);
+		CFRelease(item);
 	}
 }
 

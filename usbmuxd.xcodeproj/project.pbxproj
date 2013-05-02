@@ -32,8 +32,9 @@
 		1007CF9B01007CF9B01007CF /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CF7D01007CF7D01007CF /* device.c */; settings = {COMPILER_FLAGS = ""; }; };
 		1007D08F01007D08F01007D0 /* client.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007D08301007D08301007D0 /* client.c */; settings = {COMPILER_FLAGS = ""; }; };
 		1007DF7901007DF7901007DF /* iproxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007DF5801007DF5801007DF /* iproxy.c */; settings = {COMPILER_FLAGS = ""; }; };
-		964937C410A9AA5300A94795 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964937C310A9AA5300A94795 /* IOKit.framework */; };
-		964937C610A9AA5C00A94795 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964937C510A9AA5C00A94795 /* CoreFoundation.framework */; };
+		96061C1B1732C300002F141D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1A1732C300002F141D /* CoreFoundation.framework */; };
+		96061C1D1732C30C002F141D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1C1732C30C002F141D /* IOKit.framework */; };
+		96061C1E1732C31E002F141D /* libusbmuxd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96ED2EF011B83BF3003ED904 /* libusbmuxd.a */; };
 		969B508D129CAD23006DDD4D /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 969B508B129CAD23006DDD4D /* plist.c */; };
 		969B508E129CAD23006DDD4D /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 969B508B129CAD23006DDD4D /* plist.c */; };
 		969B508F129CAD23006DDD4D /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 969B508B129CAD23006DDD4D /* plist.c */; };
@@ -42,7 +43,6 @@
 		969B5092129CAD85006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
 		969B5093129CAD9A006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
 		969B5094129CADA8006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
-		96BB1DBC11B5F8C10008D267 /* libusb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9668BA8A11B5A2820092355D /* libusb.a */; };
 		96BB1EB911B5FAB00008D267 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (); }; };
 		96BB1ECC11B601910008D267 /* libusbmuxd.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1007CB0801007CB0801007CB /* libusbmuxd.dylib */; };
 		96ED2EE611B83BF3003ED904 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (); }; };
@@ -72,34 +72,6 @@
 			remoteGlobalIDString = 1007D30901007D30901007D3;
 			remoteInfo = usbmuxd;
 		};
-		9668BA8711B5A2820092355D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 964937A410A8C99200A94795 /* CocoaUSB */;
-			proxyType = 2;
-			remoteGlobalIDString = 960239B410503F7900562D7A;
-			remoteInfo = libusb;
-		};
-		9668BA8911B5A2820092355D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 964937A410A8C99200A94795 /* CocoaUSB */;
-			proxyType = 2;
-			remoteGlobalIDString = 96023B341051A30C00562D7A;
-			remoteInfo = libusb.a;
-		};
-		9668BA8B11B5A2820092355D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 964937A410A8C99200A94795 /* CocoaUSB */;
-			proxyType = 2;
-			remoteGlobalIDString = 96023B05105198C300562D7A;
-			remoteInfo = USB;
-		};
-		96BB1DBA11B5F8A10008D267 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 964937A410A8C99200A94795 /* CocoaUSB */;
-			proxyType = 1;
-			remoteGlobalIDString = 96023B251051A30C00562D7A;
-			remoteInfo = libusb.a;
-		};
 		96ED2EFD11B83E24003ED904 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 100795A10100795A10100795 /* Project object */;
@@ -122,9 +94,8 @@
 		1007DEBE01007DEBE01007DE /* usbmuxd-iphat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = "usbmuxd-iphat"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1007DF5801007DF5801007DF /* iproxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iproxy.c; path = tools/iproxy.c; sourceTree = "<group>"; };
 		1007ED7E01007ED7E01007ED /* iproxy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = iproxy; sourceTree = BUILT_PRODUCTS_DIR; };
-		964937A410A8C99200A94795 /* CocoaUSB */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaUSB; path = ../CocoaUSB/CocoaUSB.xcodeproj; sourceTree = SOURCE_ROOT; };
-		964937C310A9AA5300A94795 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		964937C510A9AA5C00A94795 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		96061C1A1732C300002F141D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		96061C1C1732C30C002F141D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		969B508B129CAD23006DDD4D /* plist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = plist.c; path = common/plist/plist.c; sourceTree = "<group>"; };
 		969B508C129CAD23006DDD4D /* plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plist.h; path = common/plist/plist.h; sourceTree = "<group>"; };
 		96BB1EB811B5FAB00008D267 /* usbmuxd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = usbmuxd.h; path = libusbmuxd/usbmuxd.h; sourceTree = "<group>"; };
@@ -136,9 +107,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96BB1DBC11B5F8C10008D267 /* libusb.a in Frameworks */,
-				964937C610A9AA5C00A94795 /* CoreFoundation.framework in Frameworks */,
-				964937C410A9AA5300A94795 /* IOKit.framework in Frameworks */,
+				96061C1E1732C31E002F141D /* libusbmuxd.a in Frameworks */,
+				96061C1D1732C30C002F141D /* IOKit.framework in Frameworks */,
+				96061C1B1732C300002F141D /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,13 +127,10 @@
 		1007918E01007918E0100791 = {
 			isa = PBXGroup;
 			children = (
-				964937A410A8C99200A94795 /* CocoaUSB */,
 				100791D40100791D40100791 /* Sources */,
 				100792320100792320100792 /* Resources */,
 				96BB1DDA11B5FA3B0008D267 /* Linked Libraries and Frameworks */,
 				100792840100792840100792 /* Products */,
-				964937C310A9AA5300A94795 /* IOKit.framework */,
-				964937C510A9AA5C00A94795 /* CoreFoundation.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -249,16 +217,6 @@
 			name = "Source Files";
 			sourceTree = "<group>";
 		};
-		9668BA8211B5A2820092355D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9668BA8811B5A2820092355D /* libusb-1.0.dylib */,
-				9668BA8A11B5A2820092355D /* libusb.a */,
-				9668BA8C11B5A2820092355D /* USB.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		969B5059129CACA5006DDD4D /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,10 +230,8 @@
 		96BB1DDA11B5FA3B0008D267 /* Linked Libraries and Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				964937C510A9AA5C00A94795 /* CoreFoundation.framework */,
-				964937C310A9AA5300A94795 /* IOKit.framework */,
-				964937C310A9AA5300A94795 /* IOKit.framework */,
-				964937C510A9AA5C00A94795 /* CoreFoundation.framework */,
+				96061C1A1732C300002F141D /* CoreFoundation.framework */,
+				96061C1C1732C30C002F141D /* IOKit.framework */,
 			);
 			name = "Linked Libraries and Frameworks";
 			sourceTree = "<group>";
@@ -330,7 +286,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				96BB1DBB11B5F8A10008D267 /* PBXTargetDependency */,
 			);
 			name = usbmuxd;
 			productName = usbmuxd;
@@ -387,12 +342,6 @@
 			);
 			mainGroup = 1007918E01007918E0100791;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 9668BA8211B5A2820092355D /* Products */;
-					ProjectRef = 964937A410A8C99200A94795 /* CocoaUSB */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1007981C01007981C0100798 /* All */,
@@ -403,30 +352,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		9668BA8811B5A2820092355D /* libusb-1.0.dylib */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = "libusb-1.0.dylib";
-			remoteRef = 9668BA8711B5A2820092355D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9668BA8A11B5A2820092355D /* libusb.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = libusb.a;
-			remoteRef = 9668BA8911B5A2820092355D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9668BA8C11B5A2820092355D /* USB.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = USB.framework;
-			remoteRef = 9668BA8B11B5A2820092355D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1007BC6801007BC6801007BC /* Sources */ = {
@@ -491,11 +416,6 @@
 			target = 1007D30901007D30901007D3 /* usbmuxd */;
 			targetProxy = 1007EF8501007EF8501007EF /* PBXContainerItemProxy */;
 		};
-		96BB1DBB11B5F8A10008D267 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libusb.a;
-			targetProxy = 96BB1DBA11B5F8A10008D267 /* PBXContainerItemProxy */;
-		};
 		96ED2EFE11B83E24003ED904 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 96ED2EE411B83BF3003ED904 /* libusbmuxd.a */;
@@ -512,16 +432,14 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -533,14 +451,12 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -634,26 +550,25 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3)",
+					USBMUXD_DAEMON,
+					"USBMUXD_VERSION=\\\"1.0.6\\\"",
 					HAVE_PLIST,
 				);
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'USBMUXD_DAEMON'";
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3 = "'USBMUXD_VERSION=\"1.0.6\"'";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/common",
 					"$(SRCROOT)/daemon",
 					"$(SRCROOT)/libusbmuxd",
-					"\"$(DSTROOT)/usr/local/include\"",
+					"/usr/local/include/libusb-1.0",
 					"\"$(CONFIGURATION_BUILD_DIR)/usr/local/include\"",
 				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
+					"-lusb-1.0",
 					"-Wl,-search_paths_first",
 					"-headerpad_max_install_names",
 				);
 				PRODUCT_NAME = "usbmuxd-iphat";
-				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
@@ -669,12 +584,10 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2)",
-					"$(GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3)",
+					USBMUXD_DAEMON,
+					"USBMUXD_VERSION=\\\"1.0.6\\\"",
 					HAVE_PLIST,
 				);
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_2 = "'USBMUXD_DAEMON'";
-				GCC_PREPROCESSOR_DEFINITIONS_QUOTED_FOR_TARGET_3 = "'USBMUXD_VERSION=\"1.0.6\"'";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/common",
@@ -683,12 +596,13 @@
 					"\"$(DSTROOT)/usr/local/include\"",
 					"\"$(CONFIGURATION_BUILD_DIR)/usr/local/include\"",
 				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
+					"-lusb-1.0",
 					"-Wl,-search_paths_first",
 					"-headerpad_max_install_names",
 				);
 				PRODUCT_NAME = "usbmuxd-iphat";
-				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",

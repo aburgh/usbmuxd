@@ -35,6 +35,7 @@
 		96061C1B1732C300002F141D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1A1732C300002F141D /* CoreFoundation.framework */; };
 		96061C1D1732C30C002F141D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1C1732C30C002F141D /* IOKit.framework */; };
 		96061C1E1732C31E002F141D /* libusbmuxd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96ED2EF011B83BF3003ED904 /* libusbmuxd.a */; };
+		968FC3C4173C388400371322 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1A1732C300002F141D /* CoreFoundation.framework */; };
 		969B508D129CAD23006DDD4D /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 969B508B129CAD23006DDD4D /* plist.c */; };
 		969B508E129CAD23006DDD4D /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 969B508B129CAD23006DDD4D /* plist.c */; };
 		969B508F129CAD23006DDD4D /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 969B508B129CAD23006DDD4D /* plist.c */; };
@@ -110,6 +111,14 @@
 				96061C1E1732C31E002F141D /* libusbmuxd.a in Frameworks */,
 				96061C1D1732C30C002F141D /* IOKit.framework in Frameworks */,
 				96061C1B1732C300002F141D /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		968FC3C3173C387F00371322 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				968FC3C4173C388400371322 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +275,7 @@
 			buildPhases = (
 				96BB1EBA11B5FAB00008D267 /* Headers */,
 				1007BC6801007BC6801007BC /* Sources */,
+				968FC3C3173C387F00371322 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -493,7 +503,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
-				DYLIB_CURRENT_VERSION = 1.0.6;
+				DYLIB_CURRENT_VERSION = 1.0.8;
 				EXECUTABLE_PREFIX = lib;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -520,7 +530,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
-				DYLIB_CURRENT_VERSION = 1.0.6;
+				DYLIB_CURRENT_VERSION = 1.0.8;
 				EXECUTABLE_PREFIX = lib;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -551,7 +561,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					USBMUXD_DAEMON,
-					"USBMUXD_VERSION=\\\"1.0.6\\\"",
+					"USBMUXD_VERSION=\\\"1.0.8\\\"",
 					HAVE_PLIST,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -585,7 +595,7 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					USBMUXD_DAEMON,
-					"USBMUXD_VERSION=\\\"1.0.6\\\"",
+					"USBMUXD_VERSION=\\\"1.0.8\\\"",
 					HAVE_PLIST,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -661,7 +671,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
-				DYLIB_CURRENT_VERSION = 1.0.6;
+				DYLIB_CURRENT_VERSION = 1.0.8;
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -687,7 +697,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
-				DYLIB_CURRENT_VERSION = 1.0.6;
+				DYLIB_CURRENT_VERSION = 1.0.8;
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;

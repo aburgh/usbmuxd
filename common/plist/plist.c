@@ -722,7 +722,7 @@ void plist_to_bin(plist_t plist, char **plist_bin, uint32_t * length)
 		*length = CFDataGetLength(data);
 		*plist_bin = malloc(*length);
 		if (*plist_bin)
-			CFDataGetBytes(data, CFRangeMake(0, *length), (UInt8 *) plist_bin);
+			CFDataGetBytes(data, CFRangeMake(0, *length), (UInt8 *) *plist_bin);
 		else
 			*length = 0;
 		

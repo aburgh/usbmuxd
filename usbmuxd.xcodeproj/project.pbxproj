@@ -35,6 +35,10 @@
 		96061C1B1732C300002F141D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1A1732C300002F141D /* CoreFoundation.framework */; };
 		96061C1D1732C30C002F141D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1C1732C30C002F141D /* IOKit.framework */; };
 		96061C1E1732C31E002F141D /* libusbmuxd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96ED2EF011B83BF3003ED904 /* libusbmuxd.a */; };
+		960F2A8317524FFE00518371 /* usbmuxd-proto.h in Headers */ = {isa = PBXBuildFile; fileRef = 960F2A8217524FFE00518371 /* usbmuxd-proto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		960F2A8417524FFE00518371 /* usbmuxd-proto.h in Headers */ = {isa = PBXBuildFile; fileRef = 960F2A8217524FFE00518371 /* usbmuxd-proto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		960F2A861752501B00518371 /* sock_stuff.h in Headers */ = {isa = PBXBuildFile; fileRef = 960F2A851752501B00518371 /* sock_stuff.h */; };
+		960F2A871752501B00518371 /* sock_stuff.h in Headers */ = {isa = PBXBuildFile; fileRef = 960F2A851752501B00518371 /* sock_stuff.h */; };
 		968FC3C4173C388400371322 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1A1732C300002F141D /* CoreFoundation.framework */; };
 		969B508D129CAD23006DDD4D /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 969B508B129CAD23006DDD4D /* plist.c */; };
 		969B508E129CAD23006DDD4D /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 969B508B129CAD23006DDD4D /* plist.c */; };
@@ -44,7 +48,7 @@
 		969B5092129CAD85006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
 		969B5093129CAD9A006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
 		969B5094129CADA8006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
-		96BB1EB911B5FAB00008D267 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (); }; };
+		96BB1EB911B5FAB00008D267 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96BB1ECC11B601910008D267 /* libusbmuxd.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1007CB0801007CB0801007CB /* libusbmuxd.dylib */; };
 		96ED2EE611B83BF3003ED904 /* usbmuxd.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BB1EB811B5FAB00008D267 /* usbmuxd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96ED2EE811B83BF3003ED904 /* libusbmuxd.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007B96001007B96001007B9 /* libusbmuxd.c */; settings = {COMPILER_FLAGS = ""; }; };
@@ -97,6 +101,8 @@
 		1007ED7E01007ED7E01007ED /* iproxy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = iproxy; sourceTree = BUILT_PRODUCTS_DIR; };
 		96061C1A1732C300002F141D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		96061C1C1732C30C002F141D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		960F2A8217524FFE00518371 /* usbmuxd-proto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "usbmuxd-proto.h"; path = "libusbmuxd/usbmuxd-proto.h"; sourceTree = "<group>"; };
+		960F2A851752501B00518371 /* sock_stuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sock_stuff.h; path = libusbmuxd/sock_stuff.h; sourceTree = "<group>"; };
 		969B508B129CAD23006DDD4D /* plist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = plist.c; path = common/plist/plist.c; sourceTree = "<group>"; };
 		969B508C129CAD23006DDD4D /* plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plist.h; path = common/plist/plist.h; sourceTree = "<group>"; };
 		96BB1EB811B5FAB00008D267 /* usbmuxd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = usbmuxd.h; path = libusbmuxd/usbmuxd.h; sourceTree = "<group>"; };
@@ -176,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				96BB1EB811B5FAB00008D267 /* usbmuxd.h */,
+				960F2A8217524FFE00518371 /* usbmuxd-proto.h */,
+				960F2A851752501B00518371 /* sock_stuff.h */,
 				1007932B01007932B0100793 /* Source Files */,
 			);
 			name = libusbmuxd;
@@ -253,7 +261,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				96BB1EB911B5FAB00008D267 /* usbmuxd.h in Headers */,
+				960F2A8417524FFE00518371 /* usbmuxd-proto.h in Headers */,
 				969B5091129CAD23006DDD4D /* plist.h in Headers */,
+				960F2A871752501B00518371 /* sock_stuff.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,7 +272,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				96ED2EE611B83BF3003ED904 /* usbmuxd.h in Headers */,
+				960F2A8317524FFE00518371 /* usbmuxd-proto.h in Headers */,
 				969B5090129CAD23006DDD4D /* plist.h in Headers */,
+				960F2A861752501B00518371 /* sock_stuff.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

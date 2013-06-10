@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>usbmuxd.iproxy-osx</string>
+	<key>ServiceIPC</key>
+	<true/>
+	<key>Program</key>
+	<string>/usr/local/bin/iproxy-osx</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/bin/iproxy-osx</string>
+	</array>
+	<key>Sockets</key>
+	<dict>
+		<key>Remote Port: 1234</key>
+		<dict>
+			<key>SockServiceName</key>
+			<string>1234</string>
+		</dict>
+		<key>Remote Port: 1999</key>
+		<dict>
+			<key>SockServiceName</key>
+			<string>1999</string>
+		</dict>
+		<key>Remote Port: 5900</key>
+		<dict>
+			<key>SockServiceName</key>
+			<string>6900</string>
+		</dict>
+		<key>Remote Port: 22</key>
+		<dict>
+			<key>SockServiceName</key>
+			<string>2222</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

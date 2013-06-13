@@ -5,4 +5,5 @@ Debug
 *.pbxuser
 *.perspectivev3
 xcuserdata
+xcshareddata
 .DS_Store

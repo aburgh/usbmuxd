@@ -137,7 +137,15 @@ plist_t plist_new_data(const char *val, uint64_t length)
  */
 plist_t plist_new_date(int32_t sec, int32_t usec)
 {
-	return NULL;
+//	typedef double CFTimeInterval;
+//	typedef CFTimeInterval CFAbsoluteTime;
+//	/* absolute time is the time interval since the reference date */
+//	/* the reference date (epoch) is 00:00:00 1 January 2001. */
+
+	CFAbsoluteTime abstime = (CFAbsoluteTime) sec + (CFAbsoluteTime) usec / 100000.0;
+	abstime -= 978307200.0;
+
+	return CFDateCreate(kCFAllocatorDefault, abstime);
 }
 
 /**
@@ -147,7 +155,8 @@ plist_t plist_new_date(int32_t sec, int32_t usec)
  */
 void plist_free(plist_t plist)
 {
-	CFRelease(plist);
+	if (plist)
+		CFRelease(plist);
 }
 
 /**
@@ -274,14 +283,41 @@ uint32_t plist_dict_get_size(plist_t node)
 
 /**
  * Create iterator of a #PLIST_DICT node.
- * The allocated iterator shoult be freed with tandard free function
+ * The allocated iterator should be freed with standard free function
  *
  * @param node the node of type #PLIST_DICT
  * @param iter iterator of the #PLIST_DICT node
  */
 void plist_dict_new_iter(plist_t node, plist_dict_iter *iter)
 {
-	assert("Not Implemented" == NULL);
+	assert(CFGetTypeID(node) == CFDictionaryGetTypeID());
+
+	struct {
+		CFIndex index;
+		CFIndex count;
+		const void * pairs[][2];
+	} *myiter;
+
+	CFIndex count = CFDictionaryGetCount(node);
+
+	myiter = malloc(sizeof(CFIndex) + count * 2 * sizeof(void *));
+	myiter->count = count;
+	myiter->index = 0;
+
+	const void **keys = malloc(count * sizeof(void *));
+	const void **values = malloc(count * sizeof(void *));
+
+	CFDictionaryGetKeysAndValues(node, keys, values);
+
+	for (int i = 0; i < count; i++) {
+		myiter->pairs[i][0] = keys[i];
+		myiter->pairs[i][1] = values[i];
+	}
+
+	free(keys);
+	free(values);
+
+	*iter = myiter;
 }
 
 /**
@@ -294,7 +330,33 @@ void plist_dict_new_iter(plist_t node, plist_dict_iter *iter)
  */
 void plist_dict_next_item(plist_t node, plist_dict_iter iter, char **key, plist_t *val)
 {
-	assert("Not Implemented" == NULL);
+	assert(CFGetTypeID(node) == CFDictionaryGetTypeID());
+
+	struct {
+		CFIndex index;
+		CFIndex count;
+		const void * pairs[][2];
+	} * myiter;
+
+	myiter = iter;
+
+	if (myiter->index < myiter->count) {
+		if (key) {
+			CFStringRef keyRef = myiter->pairs[myiter->index][0];
+			CFIndex maxSize = CFStringGetMaximumSizeForEncoding(CFStringGetLength(keyRef), kCFStringEncodingUTF8);
+			char *keyData = malloc(++maxSize);
+			CFStringGetCString(keyRef, keyData, maxSize, kCFStringEncodingUTF8);
+			*key = keyData;
+		}
+		if (val)
+			*val = myiter->pairs[myiter->index][1];
+
+		myiter->index += 1;
+	}
+	else {
+		if (key) *key = NULL;
+		if (val) *val = NULL;
+	}
 }
 
 /**
@@ -405,6 +467,9 @@ plist_t plist_get_parent(plist_t node)
  */
 plist_type plist_get_node_type(plist_t node)
 {
+	if (!node)
+		return PLIST_NONE;
+
 	CFTypeID type = CFGetTypeID(node);
 
 	if (type == CFArrayGetTypeID())
@@ -422,17 +487,33 @@ plist_type plist_get_node_type(plist_t node)
 	else if (type == CFBooleanGetTypeID())
 		return PLIST_BOOLEAN;
 
+	else if (type == CFDateGetTypeID())
+		return PLIST_DATE;
+
 	else if (type == CFNumberGetTypeID()) {
 
 		CFTypeID numType = CFNumberGetType(node);
-		if ( numType == kCFNumberDoubleType)
-			return PLIST_REAL;
 
-		else if (numType == kCFNumberLongType || numType == kCFNumberLongLongType)
-			return PLIST_UINT;
-
-		else
-			return PLIST_NONE;
+		switch (numType) {
+			case kCFNumberFloat32Type:
+			case kCFNumberFloat64Type:
+			case kCFNumberFloatType:
+			case kCFNumberDoubleType:
+				return PLIST_REAL;
+				break;
+			case kCFNumberSInt8Type:
+			case kCFNumberSInt16Type:
+			case kCFNumberSInt32Type:
+			case kCFNumberSInt64Type:
+			case kCFNumberCharType:
+			case kCFNumberShortType:
+			case kCFNumberIntType:
+				return PLIST_UINT;
+				break;
+			default:
+				return PLIST_NONE;
+				break;
+		}
 	}
 	return PLIST_NONE;
 }
@@ -527,7 +608,14 @@ void plist_get_data_val(plist_t node, char **val, uint64_t * length)
  */
 void plist_get_date_val(plist_t node, int32_t * sec, int32_t * usec)
 {
-	assert("Not Implemented" == NULL);
+	assert(CFGetTypeID(node) == CFDateGetTypeID());
+
+	CFAbsoluteTime abstime = CFDateGetAbsoluteTime((CFDateRef) node);
+	abstime += 978307200.0;
+
+	*sec = (int32_t) abstime;
+	abstime = fabs(abstime);
+	*usec = (int32_t) ((abstime - floor(abstime)) * 1000000);
 }
 
 
@@ -653,18 +741,22 @@ void plist_set_date_val(plist_t node, int32_t sec, int32_t usec)
  */
 void plist_to_xml(plist_t plist, char **plist_xml, uint32_t * length)
 {
+	UInt8 *data;
+	CFIndex dataLen;
+
 	*plist_xml = NULL;
 	*length = 0;
 
 	CFDataRef xmlData = CFPropertyListCreateXMLData(kCFAllocatorDefault, plist);
 	if (xmlData) {
-		*length = CFDataGetLength(xmlData);
-		*plist_xml = malloc(*length);
-		if (*plist_xml)
-			CFDataGetBytes(xmlData, CFRangeMake(0, *length), (UInt8 *) *plist_xml);
-		else
-			*length = 0;
-		
+		dataLen = CFDataGetLength(xmlData);
+		data = malloc(dataLen + 1);
+		if (data) {
+			CFDataGetBytes(xmlData, CFRangeMake(0, dataLen), data);
+			data[dataLen] = 0;
+			*plist_xml = (char *)data;
+			*length = dataLen;
+		}
 		CFRelease(xmlData);
 	}
 }
@@ -687,7 +779,7 @@ void plist_to_bin(plist_t plist, char **plist_bin, uint32_t * length)
 		*length = CFDataGetLength(data);
 		*plist_bin = malloc(*length);
 		if (*plist_bin)
-			CFDataGetBytes(data, CFRangeMake(0, *length), (UInt8 *) plist_bin);
+			CFDataGetBytes(data, CFRangeMake(0, *length), (UInt8 *) *plist_bin);
 		else
 			*length = 0;
 		

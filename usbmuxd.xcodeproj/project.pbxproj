@@ -599,7 +599,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = HAVE_PLIST;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/common";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/common\"";
 				LIBRARY_SEARCH_PATHS = "";
 				MACH_O_TYPE = mh_dylib;
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
@@ -627,7 +627,7 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = HAVE_PLIST;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/common";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/common\"";
 				LIBRARY_SEARCH_PATHS = "";
 				MACH_O_TYPE = mh_dylib;
 				OTHER_CFLAGS = "-DNDEBUG";
@@ -657,10 +657,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/common",
-					"$(SRCROOT)/daemon",
-					"$(SRCROOT)/libusbmuxd",
-					"/usr/local/include/libusb-1.0",
+					"\"$(SRCROOT)/common\"",
+					"\"$(SRCROOT)/daemon\"",
+					"\"$(SRCROOT)/libusbmuxd\"",
+					"\"/usr/local/include/libusb-1.0\"",
 					"\"$(CONFIGURATION_BUILD_DIR)/usr/local/include\"",
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
@@ -691,9 +691,9 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/common",
-					"$(SRCROOT)/daemon",
-					"$(SRCROOT)/libusbmuxd",
+					"\"$(SRCROOT)/common\"",
+					"\"$(SRCROOT)/daemon\"",
+					"\"$(SRCROOT)/libusbmuxd\"",
 					"\"$(DSTROOT)/usr/local/include\"",
 					"\"$(CONFIGURATION_BUILD_DIR)/usr/local/include\"",
 				);
@@ -724,7 +724,7 @@
 					"-headerpad_max_install_names",
 				);
 				PRODUCT_NAME = iproxy;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libusbmuxd";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/libusbmuxd\"";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -747,7 +747,7 @@
 					"-headerpad_max_install_names",
 				);
 				PRODUCT_NAME = iproxy;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libusbmuxd";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/libusbmuxd\"";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -766,7 +766,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				OTHER_LDFLAGS = "-Wl,-search_paths_first";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libusbmuxd";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/libusbmuxd\"";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -786,7 +786,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				OTHER_LDFLAGS = "-Wl,-search_paths_first";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libusbmuxd";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/libusbmuxd\"";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -808,7 +808,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = HAVE_PLIST;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/common";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/common\"";
 				MACH_O_TYPE = staticlib;
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/plist;
 				PRODUCT_NAME = usbmuxd;
@@ -835,7 +835,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = HAVE_PLIST;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/common";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/common\"";
 				MACH_O_TYPE = staticlib;
 				OTHER_CFLAGS = "-DNDEBUG";
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/plist;

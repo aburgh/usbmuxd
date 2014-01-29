@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>19975F59-60B4-4EE8-BE16-47812520564D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>usbmuxd</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7C446455-6F51-476D-9EEE-81C4626FCCB2</key>
+		<string>http://github.com/libimobiledevice/usbmuxd.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>usbmuxd.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7C446455-6F51-476D-9EEE-81C4626FCCB2</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://github.com/libimobiledevice/usbmuxd.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7C446455-6F51-476D-9EEE-81C4626FCCB2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7C446455-6F51-476D-9EEE-81C4626FCCB2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>usbmuxd</string>
+		</dict>
+	</array>
+</dict>
+</plist>

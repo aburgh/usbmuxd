@@ -1,0 +1,303 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A41DB6001899A23C006670FC /* main_win32.c in Sources */ = {isa = PBXBuildFile; fileRef = A41DB5FF1899A23C006670FC /* main_win32.c */; };
+		A473104B18981E0E0023B25F /* client.c in Sources */ = {isa = PBXBuildFile; fileRef = A473103818981E0E0023B25F /* client.c */; };
+		A473104C18981E0E0023B25F /* conf.c in Sources */ = {isa = PBXBuildFile; fileRef = A473103A18981E0E0023B25F /* conf.c */; };
+		A473104D18981E0E0023B25F /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = A473103C18981E0E0023B25F /* device.c */; };
+		A473104E18981E0E0023B25F /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = A473103E18981E0E0023B25F /* log.c */; };
+		A473104F18981E0E0023B25F /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A473104018981E0E0023B25F /* main.c */; };
+		A473105018981E0E0023B25F /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = A473104118981E0E0023B25F /* Makefile */; };
+		A473105118981E0E0023B25F /* preflight.c in Sources */ = {isa = PBXBuildFile; fileRef = A473104418981E0E0023B25F /* preflight.c */; };
+		A473105218981E0E0023B25F /* usb-linux.c in Sources */ = {isa = PBXBuildFile; fileRef = A473104618981E0E0023B25F /* usb-linux.c */; };
+		A473105318981E0E0023B25F /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = A473104918981E0E0023B25F /* utils.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A473102018981DA90023B25F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A41DB5FF1899A23C006670FC /* main_win32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main_win32.c; sourceTree = "<group>"; };
+		A473102218981DA90023B25F /* usbmuxd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = usbmuxd; sourceTree = BUILT_PRODUCTS_DIR; };
+		A473103818981E0E0023B25F /* client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = client.c; sourceTree = "<group>"; };
+		A473103918981E0E0023B25F /* client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = client.h; sourceTree = "<group>"; };
+		A473103A18981E0E0023B25F /* conf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = conf.c; sourceTree = "<group>"; };
+		A473103B18981E0E0023B25F /* conf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conf.h; sourceTree = "<group>"; };
+		A473103C18981E0E0023B25F /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = device.c; sourceTree = "<group>"; };
+		A473103D18981E0E0023B25F /* device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = device.h; sourceTree = "<group>"; };
+		A473103E18981E0E0023B25F /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = log.c; sourceTree = "<group>"; };
+		A473103F18981E0E0023B25F /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
+		A473104018981E0E0023B25F /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A473104118981E0E0023B25F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		A473104218981E0E0023B25F /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.am; sourceTree = "<group>"; };
+		A473104318981E0E0023B25F /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
+		A473104418981E0E0023B25F /* preflight.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = preflight.c; sourceTree = "<group>"; };
+		A473104518981E0E0023B25F /* preflight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = preflight.h; sourceTree = "<group>"; };
+		A473104618981E0E0023B25F /* usb-linux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "usb-linux.c"; sourceTree = "<group>"; };
+		A473104718981E0E0023B25F /* usb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usb.h; sourceTree = "<group>"; };
+		A473104818981E0E0023B25F /* usbmuxd-proto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "usbmuxd-proto.h"; sourceTree = "<group>"; };
+		A473104918981E0E0023B25F /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utils.c; sourceTree = "<group>"; };
+		A473104A18981E0E0023B25F /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		A473105418981E2D0023B25F /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A473101F18981DA90023B25F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A473101918981DA90023B25F = {
+			isa = PBXGroup;
+			children = (
+				A473102318981DA90023B25F /* Products */,
+				A473105418981E2D0023B25F /* config.h */,
+				A473102E18981E0E0023B25F /* src */,
+			);
+			sourceTree = "<group>";
+		};
+		A473102318981DA90023B25F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A473102218981DA90023B25F /* usbmuxd */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A473102E18981E0E0023B25F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A473103818981E0E0023B25F /* client.c */,
+				A473103918981E0E0023B25F /* client.h */,
+				A473103A18981E0E0023B25F /* conf.c */,
+				A473103B18981E0E0023B25F /* conf.h */,
+				A473103C18981E0E0023B25F /* device.c */,
+				A473103D18981E0E0023B25F /* device.h */,
+				A473103E18981E0E0023B25F /* log.c */,
+				A473103F18981E0E0023B25F /* log.h */,
+				A473104018981E0E0023B25F /* main.c */,
+				A41DB5FF1899A23C006670FC /* main_win32.c */,
+				A473104118981E0E0023B25F /* Makefile */,
+				A473104218981E0E0023B25F /* Makefile.am */,
+				A473104318981E0E0023B25F /* Makefile.in */,
+				A473104418981E0E0023B25F /* preflight.c */,
+				A473104518981E0E0023B25F /* preflight.h */,
+				A473104618981E0E0023B25F /* usb-linux.c */,
+				A473104718981E0E0023B25F /* usb.h */,
+				A473104818981E0E0023B25F /* usbmuxd-proto.h */,
+				A473104918981E0E0023B25F /* utils.c */,
+				A473104A18981E0E0023B25F /* utils.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A473102118981DA90023B25F /* usbmuxd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A473102B18981DA90023B25F /* Build configuration list for PBXNativeTarget "usbmuxd" */;
+			buildPhases = (
+				A473101E18981DA90023B25F /* Sources */,
+				A473101F18981DA90023B25F /* Frameworks */,
+				A473102018981DA90023B25F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = usbmuxd;
+			productName = usbmuxd;
+			productReference = A473102218981DA90023B25F /* usbmuxd */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A473101A18981DA90023B25F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = com.blackbagtech;
+			};
+			buildConfigurationList = A473101D18981DA90023B25F /* Build configuration list for PBXProject "usbmuxd" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A473101918981DA90023B25F;
+			productRefGroup = A473102318981DA90023B25F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A473102118981DA90023B25F /* usbmuxd */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A473101E18981DA90023B25F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A473105118981E0E0023B25F /* preflight.c in Sources */,
+				A473105018981E0E0023B25F /* Makefile in Sources */,
+				A473104F18981E0E0023B25F /* main.c in Sources */,
+				A473105318981E0E0023B25F /* utils.c in Sources */,
+				A473105218981E0E0023B25F /* usb-linux.c in Sources */,
+				A473104E18981E0E0023B25F /* log.c in Sources */,
+				A473104D18981E0E0023B25F /* device.c in Sources */,
+				A473104B18981E0E0023B25F /* client.c in Sources */,
+				A41DB6001899A23C006670FC /* main_win32.c in Sources */,
+				A473104C18981E0E0023B25F /* conf.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A473102918981DA90023B25F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"PACKAGE_VERSION=\\\"\"1.0.9\"\\\"",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/i586-mingw32/include",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A473102A18981DA90023B25F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/i586-mingw32/include",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A473102C18981DA90023B25F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"WIN32=1",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A473102D18981DA90023B25F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A473101D18981DA90023B25F /* Build configuration list for PBXProject "usbmuxd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A473102918981DA90023B25F /* Debug */,
+				A473102A18981DA90023B25F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A473102B18981DA90023B25F /* Build configuration list for PBXNativeTarget "usbmuxd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A473102C18981DA90023B25F /* Debug */,
+				A473102D18981DA90023B25F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A473101A18981DA90023B25F /* Project object */;
+}

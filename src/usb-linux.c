@@ -121,6 +121,9 @@ static void tx_callback(struct libusb_transfer *xfer)
 				usbmuxd_log(LL_ERROR, "TX transfer overflow for device %d-%d", dev->bus, dev->address);
 				break;
 			// and nothing happens (this never gets called) if the device is freed after a disconnect! (bad)
+			default:
+				// this should never be reached.
+				break;
 		}
 		// we can't usb_disconnect here due to a deadlock, so instead mark it as dead and reap it after processing events
 		// we'll do device_remove there too
@@ -190,6 +193,9 @@ static void rx_callback(struct libusb_transfer *xfer)
 				usbmuxd_log(LL_ERROR, "RX transfer overflow for device %d-%d", dev->bus, dev->address);
 				break;
 			// and nothing happens (this never gets called) if the device is freed after a disconnect! (bad)
+			default:
+				// this should never be reached.
+				break;
 		}
 		free(xfer->buffer);
 		dev->rx_xfer = NULL;
@@ -228,7 +234,7 @@ int usb_discover(void)
 		devlist_failures++;
 		// sometimes libusb fails getting the device list if you've just removed something
 		if(devlist_failures > 5) {
-			usbmuxd_log(LL_FATAL, "Too many errors getting device list\n");
+			usbmuxd_log(LL_FATAL, "Too many errors getting device list");
 			return cnt;
 		} else {
 			gettimeofday(&next_dev_poll_time, NULL);
@@ -279,6 +285,7 @@ int usb_discover(void)
 			usbmuxd_log(LL_WARNING, "Could not open device %d-%d: %d", bus, address, res);
 			continue;
 		}
+
 		int current_config = 0;
 		if((res = libusb_get_configuration(handle, &current_config)) != 0) {
 			usbmuxd_log(LL_WARNING, "Could not get configuration for device %d-%d: %d", bus, address, res);
@@ -306,6 +313,8 @@ int usb_discover(void)
 				}
 				libusb_free_config_descriptor(config);
 			}
+
+			usbmuxd_log(LL_INFO, "Setting configuration for device %d-%d, from %d to %d", bus, address, current_config, devdesc.bNumConfigurations);
 			if((res = libusb_set_configuration(handle, devdesc.bNumConfigurations)) != 0) {
 				usbmuxd_log(LL_WARNING, "Could not set configuration %d for device %d-%d: %d", devdesc.bNumConfigurations, bus, address, res);
 				libusb_close(handle);

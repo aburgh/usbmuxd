@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <sys/un.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/resource.h>
 #include <fcntl.h>
 #include <getopt.h>
 #include <pwd.h>
@@ -46,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "usb.h"
 #include "device.h"
 #include "client.h"
+#include "conf.h"
 
 static const char *socket_path = "/var/run/usbmuxd";
 static const char *lockfile = "/var/run/usbmuxd.pid";
@@ -64,7 +66,7 @@ static int daemon_pipe;
 
 static int report_to_parent = 0;
 
-int create_socket(void) {
+static int create_socket(void) {
 	struct sockaddr_un bind_addr;
 	int listenfd;
 
@@ -98,7 +100,7 @@ int create_socket(void) {
 	return listenfd;
 }
 
-void handle_signal(int sig)
+static void handle_signal(int sig)
 {
 	if (sig != SIGUSR1 && sig != SIGUSR2) {
 		usbmuxd_log(LL_NOTICE,"Caught signal %d, exiting", sig);
@@ -107,7 +109,7 @@ void handle_signal(int sig)
 		if(opt_udev) {
 			if (sig == SIGUSR1) {
 				usbmuxd_log(LL_INFO, "Caught SIGUSR1, checking if we can terminate (no more devices attached)...");
-				if (device_get_count() > 0) {
+				if (device_get_count(1) > 0) {
 					// we can't quit, there are still devices attached.
 					usbmuxd_log(LL_NOTICE, "Refusing to terminate, there are still devices attached. Kill me with signal 15 (TERM) to force quit.");
 				} else {
@@ -124,7 +126,7 @@ void handle_signal(int sig)
 	}
 }
 
-void set_signal_handlers(void)
+static void set_signal_handlers(void)
 {
 	struct sigaction sa;
 	sigset_t set;
@@ -162,7 +164,7 @@ static int ppoll(struct pollfd *fds, nfds_t nfds, const struct timespec *timeout
 }
 #endif
 
-int main_loop(int listenfd)
+static int main_loop(int listenfd)
 {
 	int to, cnt, i, dto;
 	struct fdlist pollfds;
@@ -291,9 +293,6 @@ static int daemonize(void)
 	daemon_pipe = pfd[1];
 	close(pfd[0]);
 	report_to_parent = 1;
-
-	// Change the file mode mask
-	umask(0);
 
 	// Create a new SID for the child process
 	sid = setsid();
@@ -442,7 +441,7 @@ int main(int argc, char *argv[])
 	/* set log level to specified verbosity */
 	log_level = verbose;
 
-	usbmuxd_log(LL_NOTICE, "usbmuxd v%s starting up", USBMUXD_VERSION);
+	usbmuxd_log(LL_NOTICE, "usbmuxd v%s starting up", PACKAGE_VERSION);
 	should_exit = 0;
 	should_discover = 0;
 
@@ -458,6 +457,7 @@ int main(int argc, char *argv[])
 	lock.l_whence = SEEK_SET;
 	lock.l_start = 0;
 	lock.l_len = 0;
+	lock.l_pid = 0;
 	fcntl(lfd, F_GETLK, &lock);
 	close(lfd);
 	if (lock.l_type != F_UNLCK) {
@@ -526,17 +526,48 @@ int main(int argc, char *argv[])
 		goto terminate;
 	}
 	sprintf(pids, "%d", getpid());
-	if ((res = write(lfd, pids, strlen(pids))) != strlen(pids)) {
+	if ((size_t)(res = write(lfd, pids, strlen(pids))) != strlen(pids)) {
 		usbmuxd_log(LL_FATAL, "Could not write pidfile!");
 		if(res >= 0)
 			res = -2;
 		goto terminate;
 	}
 
+	// set number of file descriptors to higher value
+	struct rlimit rlim;
+	getrlimit(RLIMIT_NOFILE, &rlim);
+	rlim.rlim_max = 65536;
+	setrlimit(RLIMIT_NOFILE, (const struct rlimit*)&rlim);
+
 	usbmuxd_log(LL_INFO, "Creating socket");
 	res = listenfd = create_socket();
 	if(listenfd < 0)
 		goto terminate;
+
+#ifdef HAVE_LIBIMOBILEDEVICE
+	const char* userprefdir = config_get_config_dir();
+	struct stat fst;
+	memset(&fst, '\0', sizeof(struct stat));
+	if (stat(userprefdir, &fst) < 0) {
+		if (mkdir(userprefdir, 0775) < 0) {
+			usbmuxd_log(LL_FATAL, "Failed to create required directory '%s': %s", userprefdir, strerror(errno));
+			res = -1;
+			goto terminate;
+		}
+		if (stat(userprefdir, &fst) < 0) {
+			usbmuxd_log(LL_FATAL, "stat() failed after creating directory '%s': %s", userprefdir, strerror(errno));
+			res = -1;
+			goto terminate;
+		}
+	}
+
+	// make sure permission bits are set correctly
+	if (fst.st_mode != 02775) {
+		if (chmod(userprefdir, 02775) < 0) {
+			usbmuxd_log(LL_WARNING, "chmod(%s, 02775) failed: %s", userprefdir, strerror(errno));
+		}
+	}
+#endif
 
 	// drop elevated privileges
 	if (drop_privileges && (getuid() == 0 || geteuid() == 0)) {
@@ -555,6 +586,15 @@ int main(int argc, char *argv[])
 		if (pw->pw_uid == 0) {
 			usbmuxd_log(LL_INFO, "Not dropping privileges to root");
 		} else {
+#ifdef HAVE_LIBIMOBILEDEVICE
+			/* make sure the non-privileged user has proper access to the config directory */
+			if ((fst.st_uid != pw->pw_uid) || (fst.st_gid != pw->pw_gid)) {
+				if (chown(userprefdir, pw->pw_uid, pw->pw_gid) < 0) {
+					usbmuxd_log(LL_WARNING, "chown(%s, %d, %d) failed: %s", userprefdir, pw->pw_uid, pw->pw_gid, strerror(errno));
+				}
+			}
+#endif
+
 			if ((res = initgroups(drop_user, pw->pw_gid)) < 0) {
 				usbmuxd_log(LL_FATAL, "Failed to drop privileges (cannot set supplementary groups)");
 				goto terminate;

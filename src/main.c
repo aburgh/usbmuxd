@@ -191,14 +191,7 @@ static int main_loop(int listenfd)
 
 		tspec.tv_sec = to / 1000;
 		tspec.tv_nsec = (to % 1000) * 1000000;
-#if PLATFORM_NAME==macosx
-		sigset_t orig_set;
-		sigprocmask(SIG_SETMASK, &empty_sigset, &orig_set);
-		cnt = poll(pollfds.fds, pollfds.count, to);
-		sigprocmask(SIG_SETMASK, &orig_set, NULL);
-#else
 		cnt = ppoll(pollfds.fds, pollfds.count, &tspec, &empty_sigset);
-#endif
 		usbmuxd_log(LL_FLOOD, "poll() returned %d", cnt);
 		if(cnt == -1) {
 			if(errno == EINTR) {

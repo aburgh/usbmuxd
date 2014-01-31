@@ -17,7 +17,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1007D30901007D30901007D3"
-            BuildableName = "usbmuxd-iphat"
+            BuildableName = "usbmuxd"
             BlueprintName = "usbmuxd"
             ReferencedContainer = "container:usbmuxd.xcodeproj">
          </BuildableReference>
@@ -39,7 +39,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1007D30901007D30901007D3"
-            BuildableName = "usbmuxd-iphat"
+            BuildableName = "usbmuxd"
             BlueprintName = "usbmuxd"
             ReferencedContainer = "container:usbmuxd.xcodeproj">
          </BuildableReference>

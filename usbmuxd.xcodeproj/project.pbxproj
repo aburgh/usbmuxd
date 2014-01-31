@@ -14,7 +14,6 @@
 			);
 			dependencies = (
 				1007EFF501007EFF501007EF /* PBXTargetDependency */,
-				1007EE8901007EE8901007EE /* PBXTargetDependency */,
 			);
 			name = All;
 			productName = ALL_BUILD;
@@ -26,27 +25,16 @@
 		1007CDDD01007CDDD01007CD /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CDD101007CDD101007CD /* log.c */; settings = {COMPILER_FLAGS = ""; }; };
 		1007CF9B01007CF9B01007CF /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CF7D01007CF7D01007CF /* device.c */; settings = {COMPILER_FLAGS = ""; }; };
 		1007D08F01007D08F01007D0 /* client.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007D08301007D08301007D0 /* client.c */; settings = {COMPILER_FLAGS = ""; }; };
-		1007DF7901007DF7901007DF /* iproxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007DF5801007DF5801007DF /* iproxy.c */; settings = {COMPILER_FLAGS = ""; }; };
 		96061C1B1732C300002F141D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1A1732C300002F141D /* CoreFoundation.framework */; };
 		96061C1D1732C30C002F141D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1C1732C30C002F141D /* IOKit.framework */; };
-		968FA89D1765641F009EE767 /* usbmuxd.iproxy.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 96A9286B1763CE5E0044042F /* usbmuxd.iproxy.plist */; };
 		969B508F129CAD23006DDD4D /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 969B508B129CAD23006DDD4D /* plist.c */; };
 		969B5092129CAD85006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
 		969D0322189B12DF0098CD4E /* conf.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D031E189B12DF0098CD4E /* conf.c */; };
 		969D0326189B3CB30098CD4E /* preflight.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0324189B3CB30098CD4E /* preflight.c */; };
 		969D0328189B3D9F0098CD4E /* usb-linux.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0327189B3D9F0098CD4E /* usb-linux.c */; };
-		96A9286C1764A96A0044042F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1A1732C300002F141D /* CoreFoundation.framework */; };
-		96C86659175C42A20061472B /* iproxy-osx.c in Sources */ = {isa = PBXBuildFile; fileRef = 96C8664A175C42040061472B /* iproxy-osx.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1007EE1301007EE1301007EE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 100795A10100795A10100795 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1007E1ED01007E1ED01007E1;
-			remoteInfo = iproxy;
-		};
 		1007EF8501007EF8501007EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 100795A10100795A10100795 /* Project object */;
@@ -56,19 +44,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		968FA89C1765639A009EE767 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = /Library/LaunchDaemons;
-			dstSubfolderSpec = 0;
-			files = (
-				968FA89D1765641F009EE767 /* usbmuxd.iproxy.plist in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		1007BB0C01007BB0C01007BB /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = utils.c; path = src/utils.c; sourceTree = "<group>"; };
 		1007CBD001007CBD001007CB /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = src/main.c; sourceTree = "<group>"; };
@@ -76,8 +51,6 @@
 		1007CF7D01007CF7D01007CF /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = device.c; path = src/device.c; sourceTree = "<group>"; };
 		1007D08301007D08301007D0 /* client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = client.c; path = src/client.c; sourceTree = "<group>"; };
 		1007DEBE01007DEBE01007DE /* usbmuxd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = usbmuxd; sourceTree = BUILT_PRODUCTS_DIR; };
-		1007DF5801007DF5801007DF /* iproxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iproxy.c; path = tools/iproxy.c; sourceTree = "<group>"; };
-		1007ED7E01007ED7E01007ED /* iproxy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = iproxy; sourceTree = BUILT_PRODUCTS_DIR; };
 		96061C1A1732C300002F141D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		96061C1C1732C30C002F141D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		960F2A8217524FFE00518371 /* usbmuxd-proto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "usbmuxd-proto.h"; path = "src/usbmuxd-proto.h"; sourceTree = "<group>"; };
@@ -94,9 +67,6 @@
 		969D0325189B3CB30098CD4E /* preflight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = preflight.h; path = src/preflight.h; sourceTree = "<group>"; };
 		969D0327189B3D9F0098CD4E /* usb-linux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "usb-linux.c"; path = "src/usb-linux.c"; sourceTree = "<group>"; };
 		969D0329189B3EFB0098CD4E /* usb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = usb.h; path = src/usb.h; sourceTree = "<group>"; };
-		96A9286B1763CE5E0044042F /* usbmuxd.iproxy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = usbmuxd.iproxy.plist; path = tools/usbmuxd.iproxy.plist; sourceTree = "<group>"; };
-		96C8664A175C42040061472B /* iproxy-osx.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "iproxy-osx.c"; path = "tools/iproxy-osx.c"; sourceTree = "<group>"; };
-		96C86655175C42200061472B /* iproxy-osx */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "iproxy-osx"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,21 +76,6 @@
 			files = (
 				96061C1D1732C30C002F141D /* IOKit.framework in Frameworks */,
 				96061C1B1732C300002F141D /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		96BB1ECB11B601830008D267 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		96C86650175C42200061472B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				96A9286C1764A96A0044042F /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +112,6 @@
 				969D031C189B119F0098CD4E /* utils.h */,
 				1007BB0C01007BB0C01007BB /* utils.c */,
 				1007CBD001007CBD001007CB /* main.c */,
-				100794A00100794A00100794 /* iproxy */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -166,20 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				1007DEBE01007DEBE01007DE /* usbmuxd */,
-				1007ED7E01007ED7E01007ED /* iproxy */,
-				96C86655175C42200061472B /* iproxy-osx */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		100794A00100794A00100794 /* iproxy */ = {
-			isa = PBXGroup;
-			children = (
-				1007DF5801007DF5801007DF /* iproxy.c */,
-				96C8664A175C42040061472B /* iproxy-osx.c */,
-				96A9286B1763CE5E0044042F /* usbmuxd.iproxy.plist */,
-			);
-			name = iproxy;
 			sourceTree = "<group>";
 		};
 		969B5059129CACA5006DDD4D /* common */ = {
@@ -219,39 +161,6 @@
 			productReference = 1007DEBE01007DEBE01007DE /* usbmuxd */;
 			productType = "com.apple.product-type.tool";
 		};
-		1007E1ED01007E1ED01007E1 /* iproxy */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1007E25F01007E25F01007E2 /* Build configuration list for PBXNativeTarget "iproxy" */;
-			buildPhases = (
-				1007E06301007E06301007E0 /* Sources */,
-				96BB1ECB11B601830008D267 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = iproxy;
-			productName = iproxy;
-			productReference = 1007ED7E01007ED7E01007ED /* iproxy */;
-			productType = "com.apple.product-type.tool";
-		};
-		96C8664B175C42200061472B /* iproxy-osx */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 96C86652175C42200061472B /* Build configuration list for PBXNativeTarget "iproxy-osx" */;
-			buildPhases = (
-				96C8664E175C42200061472B /* Sources */,
-				96C86650175C42200061472B /* Frameworks */,
-				968FA89C1765639A009EE767 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "iproxy-osx";
-			productName = iproxy;
-			productReference = 96C86655175C42200061472B /* iproxy-osx */;
-			productType = "com.apple.product-type.tool";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -273,8 +182,6 @@
 			targets = (
 				1007981C01007981C0100798 /* All */,
 				1007D30901007D30901007D3 /* usbmuxd */,
-				1007E1ED01007E1ED01007E1 /* iproxy */,
-				96C8664B175C42200061472B /* iproxy-osx */,
 			);
 		};
 /* End PBXProject section */
@@ -296,30 +203,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1007E06301007E06301007E0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1007DF7901007DF7901007DF /* iproxy.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		96C8664E175C42200061472B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				96C86659175C42A20061472B /* iproxy-osx.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1007EE8901007EE8901007EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1007E1ED01007E1ED01007E1 /* iproxy */;
-			targetProxy = 1007EE1301007EE1301007EE /* PBXContainerItemProxy */;
-		};
 		1007EFF501007EFF501007EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1007D30901007D30901007D3 /* usbmuxd */;
@@ -434,90 +320,6 @@
 			};
 			name = Release;
 		};
-		1007E2BB01007E2BB01007E2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-headerpad_max_install_names",
-				);
-				PRODUCT_NAME = iproxy;
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/libusbmuxd\"";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = Debug;
-		};
-		1007E36801007E36801007E3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-headerpad_max_install_names",
-				);
-				PRODUCT_NAME = iproxy;
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/libusbmuxd\"";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = Release;
-		};
-		96C86653175C42200061472B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				OTHER_LDFLAGS = "-Wl,-search_paths_first";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/libusbmuxd\"";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = Debug;
-		};
-		96C86654175C42200061472B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				OTHER_LDFLAGS = "-Wl,-search_paths_first";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/libusbmuxd\"";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -544,24 +346,6 @@
 			buildConfigurations = (
 				1007D3D501007D3D501007D3 /* Debug */,
 				1007D4E601007D4E601007D4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		1007E25F01007E25F01007E2 /* Build configuration list for PBXNativeTarget "iproxy" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1007E2BB01007E2BB01007E2 /* Debug */,
-				1007E36801007E36801007E3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		96C86652175C42200061472B /* Build configuration list for PBXNativeTarget "iproxy-osx" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				96C86653175C42200061472B /* Debug */,
-				96C86654175C42200061472B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

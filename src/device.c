@@ -25,8 +25,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #endif
 
 #include <sys/time.h>
+#ifdef WIN32
+#include <winsock2.h>
+#include <mswsock.h>
+#include <ws2tcpip.h>
+#else
 #include <netinet/in.h>
 #include <netinet/tcp.h>
+#endif
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>

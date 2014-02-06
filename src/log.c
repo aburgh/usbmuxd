@@ -29,9 +29,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <stdarg.h>
 #include <time.h>
 #include <sys/time.h>
+#ifdef WIN32
+#else
 #include <syslog.h>
+#endif
 
 #include "log.h"
+
 
 unsigned int log_level = LL_WARNING;
 
@@ -40,7 +44,7 @@ int log_syslog = 0;
 void log_enable_syslog()
 {
 	if (!log_syslog) {
-		openlog("usbmuxd", LOG_PID, 0);
+		// openlog("usbmuxd", LOG_PID, 0);
 		log_syslog = 1;
 	}
 }
@@ -48,17 +52,17 @@ void log_enable_syslog()
 void log_disable_syslog()
 {
 	if (log_syslog) {
-		closelog();
+		// closelog();
 	}
 }
 
 static int level_to_syslog_level(int level)
 {
-	int result = level + LOG_CRIT;
-	if (result > LOG_DEBUG) {
-		result = LOG_DEBUG;
-	}
-	return result;
+//	int result = level + LOG_CRIT;
+//	if (result > LOG_DEBUG) {
+//		result = LOG_DEBUG;
+//	}
+	return level;
 }
 
 void usbmuxd_log(enum loglevel level, const char *fmt, ...)
@@ -72,7 +76,7 @@ void usbmuxd_log(enum loglevel level, const char *fmt, ...)
 		return;
 
 	gettimeofday(&ts, NULL);
-	tp = localtime(&ts.tv_sec);
+	tp = localtime((time_t *)&ts.tv_sec);
 
 	fs = malloc(20 + strlen(fmt));
 
@@ -84,12 +88,13 @@ void usbmuxd_log(enum loglevel level, const char *fmt, ...)
 	}
 
 	va_start(ap, fmt);
-	if (log_syslog) {
-		vsyslog(level_to_syslog_level(level), fs, ap);
-	} else {
+//	if (log_syslog) {
+//		vsyslog(level_to_syslog_level(level), fs, ap);
+//	} else {
 		vfprintf(stderr, fs, ap);
-	}
+//	}
 	va_end(ap);
 
 	free(fs);
 }
+

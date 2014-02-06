@@ -131,7 +131,7 @@ void collection_copy(struct collection *dest, struct collection *src)
 	dest->list = malloc(sizeof(void*) * src->capacity);
 	memcpy(dest->list, src->list, sizeof(void*) * src->capacity);
 }
-
+#ifndef HAVE_LIBIMOBILEDEVICE
 #ifndef HAVE_STPCPY
 /**
  * Copy characters from one string into another
@@ -166,6 +166,7 @@ char *stpcpy(char * s1, const char * s2)
  * @return a newly allocated string, or NULL if @str is NULL.  This will also
  * return NULL and set errno to ENOMEM if memory is exhausted.
  */
+
 char *string_concat(const char *str, ...)
 {
 	size_t len;
@@ -272,3 +273,4 @@ int plist_write_to_filename(plist_t plist, const char *filename, enum plist_form
 
 	return 1;
 }
+#endif

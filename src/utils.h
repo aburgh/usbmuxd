@@ -23,8 +23,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef __UTILS_H__
 #define __UTILS_H__
 
-#include <poll.h>
 #include <plist/plist.h>
+
+#ifdef WIN32
+#undef __APPLE__
+#include <winsock2.h>
+
+//typedef u_int	SOCKET;
+//
+//typedef struct pollfd {
+//	SOCKET fd;
+//	short  events;
+//	short  revents;
+//} WSAPOLLFD, *PWSAPOLLFD, *LPWSAPOLLFD;
+//
+//int WINAPI WSAPoll(WSAPOLLFD, ULONG, INT);
+
+/* from poll.c */
+// int poll(struct pollfd *fds, int nfds, int timeout);
+#else
+#include <poll.h>
+#endif
 
 enum fdowner {
 	FD_LISTEN,

@@ -50,7 +50,10 @@ enum connection_type {
 struct idevice_private {
 	char *udid;
 	enum connection_type conn_type;
-	void *conn_data;
+	union {
+		int id;
+		void *bytes;
+	} data;
 };
 
 struct cb_data {
@@ -124,7 +127,8 @@ static void* preflight_worker_handle_device_add(void* userdata)
 	struct idevice_private *_dev = (struct idevice_private*)malloc(sizeof(struct idevice_private));
 	_dev->udid = strdup(info->serial);
 	_dev->conn_type = CONNECTION_USBMUXD;
-	_dev->conn_data = (void*)(long)info->id;
+//	_dev->conn_data = (void*)(long)info->id;
+	_dev->data.id = info->id;
 
 	idevice_t dev = (idevice_t)_dev;
 
@@ -207,7 +211,7 @@ retry:
 	}
 
 	if (!version_str) {
-		usbmuxd_log(LL_ERROR, "%s: Could not get ProductVersion string from device %s handle %d", __func__, _dev->udid, (int)(long)_dev->conn_data);
+		usbmuxd_log(LL_ERROR, "%s: Could not get ProductVersion string from device %s handle %d", __func__, _dev->udid, _dev->data.id);
 		goto leave;
 	}
 

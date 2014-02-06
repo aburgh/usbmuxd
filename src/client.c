@@ -28,9 +28,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <errno.h>
 #include <unistd.h>
 #include <sys/types.h>
+#ifdef WIN32
+#include <winsock2.h>
+#include <mswsock.h>
+#include <ws2tcpip.h>
+#else
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <arpa/inet.h>
+#endif
 #include <pthread.h>
 
 #include <plist/plist.h>
@@ -105,9 +111,14 @@ int client_set_events(struct mux_client *client, short events)
 
 int client_accept(int listenfd)
 {
-	struct sockaddr_un addr;
 	int cfd;
+#ifdef WIN32
+	struct sockaddr_in addr;
+	socklen_t len = sizeof(struct sockaddr_in);
+#else
+	struct sockaddr_un addr;
 	socklen_t len = sizeof(struct sockaddr_un);
+#endif
 	cfd = accept(listenfd, (struct sockaddr *)&addr, &len);
 	if (cfd < 0) {
 		usbmuxd_log(LL_ERROR, "accept() failed (%s)", strerror(errno));

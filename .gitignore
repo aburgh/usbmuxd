@@ -35,3 +35,5 @@ stamp-h1
 src/.libs
 src/usbmuxd
 udev/85-usbmuxd.rules
+.DS_Store
+xcuserdata

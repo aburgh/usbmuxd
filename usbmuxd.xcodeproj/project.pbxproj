@@ -1,0 +1,356 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		1007981C01007981C0100798 /* All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 100799AC0100799AC0100799 /* Build configuration list for PBXAggregateTarget "All" */;
+			buildPhases = (
+			);
+			dependencies = (
+				1007EFF501007EFF501007EF /* PBXTargetDependency */,
+			);
+			name = All;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		1007CBE101007CBE101007CB /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CBD001007CBD001007CB /* main.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007CDDD01007CDDD01007CD /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CDD101007CDD101007CD /* log.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007CF9B01007CF9B01007CF /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CF7D01007CF7D01007CF /* device.c */; settings = {COMPILER_FLAGS = ""; }; };
+		1007D08F01007D08F01007D0 /* client.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007D08301007D08301007D0 /* client.c */; settings = {COMPILER_FLAGS = ""; }; };
+		96061C1B1732C300002F141D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1A1732C300002F141D /* CoreFoundation.framework */; };
+		96061C1D1732C30C002F141D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96061C1C1732C30C002F141D /* IOKit.framework */; };
+		969B508F129CAD23006DDD4D /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 969B508B129CAD23006DDD4D /* plist.c */; };
+		969B5092129CAD85006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
+		969D0322189B12DF0098CD4E /* conf.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D031E189B12DF0098CD4E /* conf.c */; };
+		969D0326189B3CB30098CD4E /* preflight.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0324189B3CB30098CD4E /* preflight.c */; };
+		969D0328189B3D9F0098CD4E /* usb-linux.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0327189B3D9F0098CD4E /* usb-linux.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1007EF8501007EF8501007EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 100795A10100795A10100795 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1007D30901007D30901007D3;
+			remoteInfo = usbmuxd;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1007BB0C01007BB0C01007BB /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = utils.c; path = src/utils.c; sourceTree = "<group>"; };
+		1007CBD001007CBD001007CB /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = src/main.c; sourceTree = "<group>"; };
+		1007CDD101007CDD101007CD /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = log.c; path = src/log.c; sourceTree = "<group>"; };
+		1007CF7D01007CF7D01007CF /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = device.c; path = src/device.c; sourceTree = "<group>"; };
+		1007D08301007D08301007D0 /* client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = client.c; path = src/client.c; sourceTree = "<group>"; };
+		1007DEBE01007DEBE01007DE /* usbmuxd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = usbmuxd; sourceTree = BUILT_PRODUCTS_DIR; };
+		96061C1A1732C300002F141D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		96061C1C1732C30C002F141D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		960F2A8217524FFE00518371 /* usbmuxd-proto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "usbmuxd-proto.h"; path = "src/usbmuxd-proto.h"; sourceTree = "<group>"; };
+		969B508B129CAD23006DDD4D /* plist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = plist.c; path = common/plist/plist.c; sourceTree = "<group>"; };
+		969B508C129CAD23006DDD4D /* plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plist.h; path = common/plist/plist.h; sourceTree = "<group>"; };
+		969D031C189B119F0098CD4E /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utils.h; path = src/utils.h; sourceTree = "<group>"; };
+		969D031D189B12DF0098CD4E /* client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = client.h; path = src/client.h; sourceTree = "<group>"; };
+		969D031E189B12DF0098CD4E /* conf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = conf.c; path = src/conf.c; sourceTree = "<group>"; };
+		969D031F189B12DF0098CD4E /* conf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = conf.h; path = src/conf.h; sourceTree = "<group>"; };
+		969D0320189B12DF0098CD4E /* device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = device.h; path = src/device.h; sourceTree = "<group>"; };
+		969D0321189B12DF0098CD4E /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = log.h; path = src/log.h; sourceTree = "<group>"; };
+		969D0323189B14B20098CD4E /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
+		969D0324189B3CB30098CD4E /* preflight.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = preflight.c; path = src/preflight.c; sourceTree = "<group>"; };
+		969D0325189B3CB30098CD4E /* preflight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = preflight.h; path = src/preflight.h; sourceTree = "<group>"; };
+		969D0327189B3D9F0098CD4E /* usb-linux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "usb-linux.c"; path = "src/usb-linux.c"; sourceTree = "<group>"; };
+		969D0329189B3EFB0098CD4E /* usb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = usb.h; path = src/usb.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		964937BF10A9A9F800A94795 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96061C1D1732C30C002F141D /* IOKit.framework in Frameworks */,
+				96061C1B1732C300002F141D /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1007918E01007918E0100791 = {
+			isa = PBXGroup;
+			children = (
+				969D0323189B14B20098CD4E /* project.xcconfig */,
+				969B5059129CACA5006DDD4D /* common */,
+				100791D40100791D40100791 /* src */,
+				96BB1DDA11B5FA3B0008D267 /* Linked Libraries and Frameworks */,
+				100792840100792840100792 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		100791D40100791D40100791 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				960F2A8217524FFE00518371 /* usbmuxd-proto.h */,
+				969D031D189B12DF0098CD4E /* client.h */,
+				1007D08301007D08301007D0 /* client.c */,
+				969D031E189B12DF0098CD4E /* conf.c */,
+				969D031F189B12DF0098CD4E /* conf.h */,
+				969D0320189B12DF0098CD4E /* device.h */,
+				1007CF7D01007CF7D01007CF /* device.c */,
+				969D0321189B12DF0098CD4E /* log.h */,
+				1007CDD101007CDD101007CD /* log.c */,
+				969D0324189B3CB30098CD4E /* preflight.c */,
+				969D0325189B3CB30098CD4E /* preflight.h */,
+				969D0329189B3EFB0098CD4E /* usb.h */,
+				969D0327189B3D9F0098CD4E /* usb-linux.c */,
+				969D031C189B119F0098CD4E /* utils.h */,
+				1007BB0C01007BB0C01007BB /* utils.c */,
+				1007CBD001007CBD001007CB /* main.c */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		100792840100792840100792 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1007DEBE01007DEBE01007DE /* usbmuxd */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		969B5059129CACA5006DDD4D /* common */ = {
+			isa = PBXGroup;
+			children = (
+				969B508C129CAD23006DDD4D /* plist.h */,
+				969B508B129CAD23006DDD4D /* plist.c */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		96BB1DDA11B5FA3B0008D267 /* Linked Libraries and Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96061C1A1732C300002F141D /* CoreFoundation.framework */,
+				96061C1C1732C30C002F141D /* IOKit.framework */,
+			);
+			name = "Linked Libraries and Frameworks";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1007D30901007D30901007D3 /* usbmuxd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1007D37A01007D37A01007D3 /* Build configuration list for PBXNativeTarget "usbmuxd" */;
+			buildPhases = (
+				1007D17D01007D17D01007D1 /* Sources */,
+				964937BF10A9A9F800A94795 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = usbmuxd;
+			productName = usbmuxd;
+			productReference = 1007DEBE01007DEBE01007DE /* usbmuxd */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		100795A10100795A10100795 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = 100796170100796170100796 /* Build configuration list for PBXProject "usbmuxd" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1007918E01007918E0100791;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1007981C01007981C0100798 /* All */,
+				1007D30901007D30901007D3 /* usbmuxd */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1007D17D01007D17D01007D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				969B5092129CAD85006DDD4D /* utils.c in Sources */,
+				969D0328189B3D9F0098CD4E /* usb-linux.c in Sources */,
+				969D0326189B3CB30098CD4E /* preflight.c in Sources */,
+				1007CDDD01007CDDD01007CD /* log.c in Sources */,
+				1007CF9B01007CF9B01007CF /* device.c in Sources */,
+				1007D08F01007D08F01007D0 /* client.c in Sources */,
+				969D0322189B12DF0098CD4E /* conf.c in Sources */,
+				1007CBE101007CBE101007CB /* main.c in Sources */,
+				969B508F129CAD23006DDD4D /* plist.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1007EFF501007EFF501007EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1007D30901007D30901007D3 /* usbmuxd */;
+			targetProxy = 1007EF8501007EF8501007EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		100792ED0100792ED0100792 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 969D0323189B14B20098CD4E /* project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1007964A01007964A0100796 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 969D0323189B14B20098CD4E /* project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		10079A1E010079A1E010079A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				PRODUCT_NAME = ALL_BUILD;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		10079BD7010079BD7010079B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				PRODUCT_NAME = ALL_BUILD;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		1007D3D501007D3D501007D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				PRODUCT_NAME = usbmuxd;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		1007D4E601007D4E601007D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				PRODUCT_NAME = usbmuxd;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		100796170100796170100796 /* Build configuration list for PBXProject "usbmuxd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				100792ED0100792ED0100792 /* Debug */,
+				1007964A01007964A0100796 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		100799AC0100799AC0100799 /* Build configuration list for PBXAggregateTarget "All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10079A1E010079A1E010079A /* Debug */,
+				10079BD7010079BD7010079B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1007D37A01007D37A01007D3 /* Build configuration list for PBXNativeTarget "usbmuxd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1007D3D501007D3D501007D3 /* Debug */,
+				1007D4E601007D4E601007D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 100795A10100795A10100795 /* Project object */;
+}

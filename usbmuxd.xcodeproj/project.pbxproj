@@ -90,6 +90,7 @@
 		969D0329189B3EFB0098CD4E /* usb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = usb.h; path = src/usb.h; sourceTree = "<group>"; };
 		96E6CBF918A3F810009BAB5B /* usbmuxd-win32.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "usbmuxd-win32.xcconfig"; sourceTree = "<group>"; };
 		96E6CBFE18A3F843009BAB5B /* usbmuxd-win32.exe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "usbmuxd-win32.exe"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A41379E218A40A4C00F53217 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = src/config.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +128,7 @@
 		100791D40100791D40100791 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				A41379E218A40A4C00F53217 /* config.h */,
 				960F2A8217524FFE00518371 /* usbmuxd-proto.h */,
 				969D031D189B12DF0098CD4E /* client.h */,
 				1007D08301007D08301007D0 /* client.c */,

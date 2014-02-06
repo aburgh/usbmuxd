@@ -97,7 +97,7 @@ static void usb_disconnect(struct usb_device *dev)
 	free(dev);
 }
 
-static void tx_callback(struct libusb_transfer *xfer)
+static void _tx_callback(struct libusb_transfer *xfer)
 {
 	struct usb_device *dev = xfer->user_data;
 	usbmuxd_log(LL_SPEW, "TX callback dev %d-%d len %d -> %d status %d", dev->bus, dev->address, xfer->length, xfer->actual_length, xfer->status);
@@ -139,6 +139,8 @@ static void tx_callback(struct libusb_transfer *xfer)
 	libusb_free_transfer(xfer);
 }
 
+static libusb_transfer_cb_fn tx_callback = (libusb_transfer_cb_fn) _tx_callback;
+
 int usb_send(struct usb_device *dev, const unsigned char *buf, int length)
 {
 	int res;
@@ -166,7 +168,7 @@ int usb_send(struct usb_device *dev, const unsigned char *buf, int length)
 	return 0;
 }
 
-static void rx_callback(struct libusb_transfer *xfer)
+static void _rx_callback(struct libusb_transfer *xfer)
 {
 	struct usb_device *dev = xfer->user_data;
 	usbmuxd_log(LL_SPEW, "RX callback dev %d-%d len %d status %d", dev->bus, dev->address, xfer->actual_length, xfer->status);
@@ -209,6 +211,8 @@ static void rx_callback(struct libusb_transfer *xfer)
 		dev->alive = 0;
 	}
 }
+
+static libusb_transfer_cb_fn rx_callback = (libusb_transfer_cb_fn) _rx_callback;
 
 static int start_rx(struct usb_device *dev)
 {

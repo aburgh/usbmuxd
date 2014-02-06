@@ -32,6 +32,15 @@
 		969D0322189B12DF0098CD4E /* conf.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D031E189B12DF0098CD4E /* conf.c */; };
 		969D0326189B3CB30098CD4E /* preflight.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0324189B3CB30098CD4E /* preflight.c */; };
 		969D0328189B3D9F0098CD4E /* usb-linux.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0327189B3D9F0098CD4E /* usb-linux.c */; };
+		96E6CC0718A3F8A0009BAB5B /* client.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007D08301007D08301007D0 /* client.c */; };
+		96E6CC0818A3F8A0009BAB5B /* conf.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D031E189B12DF0098CD4E /* conf.c */; };
+		96E6CC0B18A3F8A0009BAB5B /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CF7D01007CF7D01007CF /* device.c */; };
+		96E6CC0D18A3F8A0009BAB5B /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CDD101007CDD101007CD /* log.c */; };
+		96E6CC0E18A3F8A0009BAB5B /* preflight.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0324189B3CB30098CD4E /* preflight.c */; };
+		96E6CC1118A3F8A0009BAB5B /* usb-linux.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0327189B3D9F0098CD4E /* usb-linux.c */; };
+		96E6CC1218A3F8A0009BAB5B /* utils.h in Sources */ = {isa = PBXBuildFile; fileRef = 969D031C189B119F0098CD4E /* utils.h */; };
+		96E6CC1318A3F8A0009BAB5B /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
+		96E6CC1418A3F8A0009BAB5B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007CBD001007CBD001007CB /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +52,18 @@
 			remoteInfo = usbmuxd;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		96E6CBFC18A3F843009BAB5B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1007BB0C01007BB0C01007BB /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = utils.c; path = src/utils.c; sourceTree = "<group>"; };
@@ -67,6 +88,8 @@
 		969D0325189B3CB30098CD4E /* preflight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = preflight.h; path = src/preflight.h; sourceTree = "<group>"; };
 		969D0327189B3D9F0098CD4E /* usb-linux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "usb-linux.c"; path = "src/usb-linux.c"; sourceTree = "<group>"; };
 		969D0329189B3EFB0098CD4E /* usb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = usb.h; path = src/usb.h; sourceTree = "<group>"; };
+		96E6CBF918A3F810009BAB5B /* usbmuxd-win32.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "usbmuxd-win32.xcconfig"; sourceTree = "<group>"; };
+		96E6CBFE18A3F843009BAB5B /* usbmuxd-win32.exe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "usbmuxd-win32.exe"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +102,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96E6CBFB18A3F843009BAB5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -86,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				969D0323189B14B20098CD4E /* project.xcconfig */,
+				96E6CBF918A3F810009BAB5B /* usbmuxd-win32.xcconfig */,
 				969B5059129CACA5006DDD4D /* common */,
 				100791D40100791D40100791 /* src */,
 				96BB1DDA11B5FA3B0008D267 /* Linked Libraries and Frameworks */,
@@ -120,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				1007DEBE01007DEBE01007DE /* usbmuxd */,
+				96E6CBFE18A3F843009BAB5B /* usbmuxd-win32.exe */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,6 +193,23 @@
 			productReference = 1007DEBE01007DEBE01007DE /* usbmuxd */;
 			productType = "com.apple.product-type.tool";
 		};
+		96E6CBFD18A3F843009BAB5B /* usbmuxd-win32 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96E6CC0418A3F843009BAB5B /* Build configuration list for PBXNativeTarget "usbmuxd-win32" */;
+			buildPhases = (
+				96E6CBFA18A3F843009BAB5B /* Sources */,
+				96E6CBFB18A3F843009BAB5B /* Frameworks */,
+				96E6CBFC18A3F843009BAB5B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "usbmuxd-win32";
+			productName = "usbmuxd-win32";
+			productReference = 96E6CBFE18A3F843009BAB5B /* usbmuxd-win32.exe */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -182,6 +231,7 @@
 			targets = (
 				1007981C01007981C0100798 /* All */,
 				1007D30901007D30901007D3 /* usbmuxd */,
+				96E6CBFD18A3F843009BAB5B /* usbmuxd-win32 */,
 			);
 		};
 /* End PBXProject section */
@@ -200,6 +250,22 @@
 				969D0322189B12DF0098CD4E /* conf.c in Sources */,
 				1007CBE101007CBE101007CB /* main.c in Sources */,
 				969B508F129CAD23006DDD4D /* plist.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96E6CBFA18A3F843009BAB5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96E6CC1418A3F8A0009BAB5B /* main.c in Sources */,
+				96E6CC0718A3F8A0009BAB5B /* client.c in Sources */,
+				96E6CC0818A3F8A0009BAB5B /* conf.c in Sources */,
+				96E6CC0B18A3F8A0009BAB5B /* device.c in Sources */,
+				96E6CC0D18A3F8A0009BAB5B /* log.c in Sources */,
+				96E6CC0E18A3F8A0009BAB5B /* preflight.c in Sources */,
+				96E6CC1118A3F8A0009BAB5B /* usb-linux.c in Sources */,
+				96E6CC1218A3F8A0009BAB5B /* utils.h in Sources */,
+				96E6CC1318A3F8A0009BAB5B /* utils.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +386,56 @@
 			};
 			name = Release;
 		};
+		96E6CC0518A3F843009BAB5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96E6CBF918A3F810009BAB5B /* usbmuxd-win32.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)WIN32=1",
+					"_WIN32_WINNT=0x0600",
+					_POSIX,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME).$(WRAPPER_EXTENSION)";
+			};
+			name = Debug;
+		};
+		96E6CC0618A3F843009BAB5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96E6CBF918A3F810009BAB5B /* usbmuxd-win32.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME).$(WRAPPER_EXTENSION)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -346,6 +462,15 @@
 			buildConfigurations = (
 				1007D3D501007D3D501007D3 /* Debug */,
 				1007D4E601007D4E601007D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		96E6CC0418A3F843009BAB5B /* Build configuration list for PBXNativeTarget "usbmuxd-win32" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96E6CC0518A3F843009BAB5B /* Debug */,
+				96E6CC0618A3F843009BAB5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

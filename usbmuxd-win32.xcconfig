@@ -1,0 +1,14 @@
+//
+//  usbmuxd-win32.xcconfig
+//  usbmuxd-ryan
+//
+//  Created by Aaron Burghardt on 2/6/14.
+//  Copyright (c) 2014 com.blackbagtech. All rights reserved.
+//
+
+HEADER_SEARCH_PATHS = $(inherited) /usr/local/dst.limd/include /usr/local/mingw-w64-bin_i686-darwin_20130615/x86_64-w64-mingw32/include /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include /usr/local/dst.limd/include/libusb-1.0
+GCC_PREPROCESSOR_DEFINITIONS = WIN32=1 _WIN32_WINNT=0x0600 DHAVE_CONFIG_H HAVE_LIBIMOBILEDEVICE LIBXML_STATIC _POSIX
+
+WRAPPER_EXTENSION = exe
+PRODUCT_NAME = $(TARGET_NAME).$(WRAPPER_EXTENSION)
+

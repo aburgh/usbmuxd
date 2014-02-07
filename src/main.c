@@ -66,6 +66,7 @@ int should_exit;
 int should_discover;
 
 static int verbose = 0;
+static int verbose_usb = 0;
 static int foreground = 0;
 static int drop_privileges = 0;
 static const char *drop_user = NULL;
@@ -422,6 +423,7 @@ static void usage()
 	printf("usage: usbmuxd [options]\n");
 	printf("\t-h|--help                 Print this message.\n");
 	printf("\t-v|--verbose              Be verbose (use twice or more to increase).\n");
+	printf("\t-V|--verbose-usb          Set libusb verbosity (use twice or more to increase).\n");
 	printf("\t-f|--foreground           Do not daemonize (implies one -v).\n");
 	printf("\t-U|--user USER            Change to this user after startup (needs usb privileges).\n");
 	printf("\t-u|--udev                 Run in udev operation mode.\n");
@@ -438,6 +440,7 @@ static void parse_opts(int argc, char **argv)
 		{"help", 0, NULL, 'h'},
 		{"foreground", 0, NULL, 'f'},
 		{"verbose", 0, NULL, 'v'},
+		{"verbose-usb", 0, NULL, 'V'},
 		{"user", 2, NULL, 'U'},
 		{"udev", 0, NULL, 'u'},
 		{"exit", 0, NULL, 'x'},
@@ -447,7 +450,7 @@ static void parse_opts(int argc, char **argv)
 	int c;
 	
 	while (1) {
-		c = getopt_long(argc, argv, "hfvuU:xX", longopts, (int *) 0);
+		c = getopt_long(argc, argv, "hfvVuU:xX", longopts, (int *) 0);
 		if (c == -1) {
 			break;
 		}
@@ -461,6 +464,9 @@ static void parse_opts(int argc, char **argv)
 				break;
 			case 'v':
 				++verbose;
+				break;
+			case 'V':
+				++verbose_usb;
 				break;
 			case 'U':
 				drop_privileges = 1;
@@ -712,7 +718,7 @@ int main(int argc, char *argv[])
 	client_init();
 	device_init();
 	usbmuxd_log(LL_INFO, "Initializing USB");
-	if((res = usb_init()) < 0)
+	if((res = usb_init(verbose_usb)) < 0)
 		goto terminate;
 	
 	usbmuxd_log(LL_INFO, "%d device%s detected", res, (res==1)?"":"s");

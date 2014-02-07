@@ -50,7 +50,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 struct usb_device;
 
-int usb_init(void);
+int usb_init(int usb_debug_level);
 void usb_shutdown(void);
 const char *usb_get_serial(struct usb_device *dev);
 uint32_t usb_get_location(struct usb_device *dev);

@@ -584,7 +584,7 @@ int usb_process_timeout(int msec)
 	return 0;
 }
 
-int usb_init(void)
+int usb_init(int usb_debug_level)
 {
 	int res;
 	usbmuxd_log(LL_DEBUG, "usb_init for linux / libusb 1.0");
@@ -592,7 +592,7 @@ int usb_init(void)
 	devlist_failures = 0;
 	device_polling = 1;
 	res = libusb_init(NULL);
-	//libusb_set_debug(NULL, 3);
+	libusb_set_debug(NULL, usb_debug_level);
 	if(res != 0) {
 		usbmuxd_log(LL_FATAL, "libusb_init failed: %d", res);
 		return -1;

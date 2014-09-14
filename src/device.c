@@ -2,6 +2,7 @@
 	usbmuxd - iPhone/iPod Touch USB multiplex server daemon
 
 Copyright (C) 2009	Hector Martin "marcan" <hector@marcansoft.com>
+Copyright (C) 2014  Mikkel Kamstrup Erlandsen <mikkel.kamstrup@xamarin.com>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -49,6 +50,8 @@ int next_device_id;
 
 enum mux_protocol {
 	MUX_PROTO_VERSION = 0,
+	MUX_PROTO_CONTROL = 1,
+	MUX_PROTO_SETUP = 2,
 	MUX_PROTO_TCP = IPPROTO_TCP,
 };
 
@@ -70,6 +73,9 @@ struct mux_header
 {
 	uint32_t protocol;
 	uint32_t length;
+	uint32_t magic;
+	uint16_t tx_seq;
+	uint16_t rx_seq;
 };
 
 struct version_header
@@ -114,16 +120,47 @@ struct mux_device
 	unsigned char *pktbuf;
 	uint32_t pktlen;
 	void *preflight_cb_data;
+	int version;
+	uint16_t rx_seq;
+	uint16_t tx_seq;
 };
 
 static struct collection device_list;
 pthread_mutex_t device_list_mutex;
 
-static uint64_t mstime64(void)
+static struct mux_device* get_mux_device_for_id(int device_id)
 {
-	struct timeval tv;
-	gettimeofday(&tv, NULL);
-	return tv.tv_sec * 1000 + tv.tv_usec / 1000;
+  struct mux_device *dev = NULL;
+	pthread_mutex_lock(&device_list_mutex);
+	FOREACH(struct mux_device *cdev, &device_list) {
+		if(cdev->id == device_id) {
+			dev = cdev;
+			break;
+		}
+	} ENDFOREACH
+	pthread_mutex_unlock(&device_list_mutex);
+
+	return dev;
+}
+
+static struct mux_connection* get_mux_connection(int device_id, struct mux_client *client)
+{
+	struct mux_connection *conn = NULL;
+	pthread_mutex_lock(&device_list_mutex);
+	FOREACH(struct mux_device *dev, &device_list) {
+		if(dev->id == device_id) {
+			FOREACH(struct mux_connection *lconn, &dev->connections) {
+				if(lconn->client == client) {
+					conn = lconn;
+					break;
+				}
+			} ENDFOREACH
+			break;
+		}
+	} ENDFOREACH
+	pthread_mutex_unlock(&device_list_mutex);
+
+	return conn;
 }
 
 static int get_next_device_id(void)
@@ -154,6 +191,9 @@ static int send_packet(struct mux_device *dev, enum mux_protocol proto, void *he
 		case MUX_PROTO_VERSION:
 			hdrlen = sizeof(struct version_header);
 			break;
+		case MUX_PROTO_SETUP:
+			hdrlen = 0;
+			break;
 		case MUX_PROTO_TCP:
 			hdrlen = sizeof(struct tcphdr);
 			break;
@@ -163,7 +203,9 @@ static int send_packet(struct mux_device *dev, enum mux_protocol proto, void *he
 	}
 	usbmuxd_log(LL_SPEW, "send_packet(%d, 0x%x, %p, %p, %d)", dev->id, proto, header, data, length);
 
-	int total = sizeof(struct mux_header) + hdrlen + length;
+	int mux_header_size = ((dev->version < 2) ? 8 : sizeof(struct mux_header));
+
+	int total = mux_header_size + hdrlen + length;
 
 	if(total > USB_MTU) {
 		usbmuxd_log(LL_ERROR, "Tried to send packet larger than USB MTU (hdr %d data %d total %d) to device %d", hdrlen, length, total, dev->id);
@@ -174,9 +216,19 @@ static int send_packet(struct mux_device *dev, enum mux_protocol proto, void *he
 	struct mux_header *mhdr = (struct mux_header *)buffer;
 	mhdr->protocol = htonl(proto);
 	mhdr->length = htonl(total);
-	memcpy(buffer + sizeof(struct mux_header), header, hdrlen);
+	if (dev->version >= 2) {
+		mhdr->magic = htonl(0xfeedface);
+		if (proto == MUX_PROTO_SETUP) {
+			dev->tx_seq = 0;
+			dev->rx_seq = 0xFFFF;
+		}
+		mhdr->tx_seq = htons(dev->tx_seq);
+		mhdr->rx_seq = htons(dev->rx_seq);
+		dev->tx_seq++;
+	}	
+	memcpy(buffer + mux_header_size, header, hdrlen);
 	if(data && length)
-		memcpy(buffer + sizeof(struct mux_header) + hdrlen, data, length);
+		memcpy(buffer + mux_header_size + hdrlen, data, length);
 
 	if((res = usb_send(dev->usbdev, buffer, total)) < 0) {
 		usbmuxd_log(LL_ERROR, "usb_send failed while sending packet (len %d) to device %d: %d", total, dev->id, res);
@@ -274,15 +326,7 @@ static void connection_teardown(struct mux_connection *conn)
 
 int device_start_connect(int device_id, uint16_t dport, struct mux_client *client)
 {
-	struct mux_device *dev = NULL;
-	pthread_mutex_lock(&device_list_mutex);
-	FOREACH(struct mux_device *cdev, &device_list) {
-		if(cdev->id == device_id) {
-			dev = cdev;
-			break;
-		}
-	} ENDFOREACH
-	pthread_mutex_unlock(&device_list_mutex);
+	struct mux_device *dev = get_mux_device_for_id(device_id);
 	if(!dev) {
 		usbmuxd_log(LL_WARNING, "Attempted to connect to nonexistent device %d", device_id);
 		return -RESULT_BADDEV;
@@ -329,6 +373,13 @@ int device_start_connect(int device_id, uint16_t dport, struct mux_client *clien
 	return 0;
 }
 
+/**
+ * Examine the state of a connection's buffers and
+ * update all connection flags and masks accordingly.
+ * Does not do I/O.
+ *
+ * @param conn The connection to update.
+ */
 static void update_connection(struct mux_connection *conn)
 {
 	uint32_t sent = conn->tx_seq - conn->rx_ack;
@@ -362,22 +413,31 @@ static void update_connection(struct mux_connection *conn)
 	client_set_events(conn->client, conn->events);
 }
 
+static int send_tcp_ack(struct mux_connection *conn)
+{
+	if(send_tcp(conn, TH_ACK, NULL, 0) < 0) {
+		usbmuxd_log(LL_ERROR, "Error sending TCP ACK (%d->%d)", conn->sport, conn->dport);
+		connection_teardown(conn);
+    return -1;
+	}
+
+  update_connection(conn);
+
+  return 0;
+}
+
+/**
+ * Flush input and output buffers for a client connection.
+ *
+ * @param device_id Numeric id for the device.
+ * @param client The client to flush buffers for.
+ * @param events event mask for the client. POLLOUT means that
+ *   the client is ready to receive data, POLLIN that it has
+ *   data to be read (and send along to the device).
+ */
 void device_client_process(int device_id, struct mux_client *client, short events)
 {
-	struct mux_connection *conn = NULL;
-	pthread_mutex_lock(&device_list_mutex);
-	FOREACH(struct mux_device *dev, &device_list) {
-		if(dev->id == device_id) {
-			FOREACH(struct mux_connection *lconn, &dev->connections) {
-				if(lconn->client == client) {
-					conn = lconn;
-					break;
-				}
-			} ENDFOREACH
-			break;
-		}
-	} ENDFOREACH
-	pthread_mutex_unlock(&device_list_mutex);
+	struct mux_connection *conn = get_mux_connection(device_id, client);
 
 	if(!conn) {
 		usbmuxd_log(LL_WARNING, "Could not find connection for device %d client %p", device_id, client);
@@ -387,7 +447,9 @@ void device_client_process(int device_id, struct mux_client *client, short event
 
 	int res;
 	int size;
-	if(events & POLLOUT) {
+	if((events & POLLOUT) && conn->ib_size > 0) {
+		// Client is ready to receive data, send what we have
+		// in the client's connection buffer (if there is any)
 		size = client_write(conn->client, conn->ib_buf, conn->ib_size);
 		if(size <= 0) {
 			usbmuxd_log(LL_DEBUG, "error writing to client (%d)", size);
@@ -402,10 +464,15 @@ void device_client_process(int device_id, struct mux_client *client, short event
 			memmove(conn->ib_buf, conn->ib_buf + size, conn->ib_size);
 		}
 	}
-	if(events & POLLIN) {
+	if((events & POLLIN) && conn->sendable > 0) {
+		// There is inbound trafic on the client socket,
+		// convert it to tcp and send to the device
+		// (if the device's input buffer is not full)
 		size = client_read(conn->client, conn->ob_buf, conn->sendable);
 		if(size <= 0) {
-			usbmuxd_log(LL_DEBUG, "error reading from client (%d)", size);
+			if (size < 0) {
+				usbmuxd_log(LL_DEBUG, "error reading from client (%d)", size);
+			}
 			connection_teardown(conn);
 			return;
 		}
@@ -420,6 +487,23 @@ void device_client_process(int device_id, struct mux_client *client, short event
 	update_connection(conn);
 }
 
+/**
+ * Copy a payload to a connection's in-buffer and
+ * set the POLLOUT event mask on the connection so
+ * the next main_loop iteration will dispatch the
+ * buffer if the connection socket is writable.
+ *
+ * Connection buffers are flushed in the
+ * device_client_process() function.
+ *
+ * @param conn The connection to add incoming data to.
+ * @param payload Payload to prepare for writing.
+ *   The payload will be copied immediately so you are
+ *   free to alter or free the payload buffer when this
+ *   function returns.
+ * @param payload_length number of bytes to copy from from
+ *   the payload.
+ */
 static void connection_device_input(struct mux_connection *conn, unsigned char *payload, uint32_t payload_length)
 {
 	if((conn->ib_size + payload_length) > conn->ib_capacity) {
@@ -435,23 +519,12 @@ static void connection_device_input(struct mux_connection *conn, unsigned char *
 
 void device_abort_connect(int device_id, struct mux_client *client)
 {
-	pthread_mutex_lock(&device_list_mutex);
-	FOREACH(struct mux_device *dev, &device_list) {
-		if(dev->id == device_id) {
-			FOREACH(struct mux_connection *conn, &dev->connections) {
-				if(conn->client == client) {
-					connection_teardown(conn);
-					pthread_mutex_unlock(&device_list_mutex);
-					return;
-				}
-			} ENDFOREACH
-			pthread_mutex_unlock(&device_list_mutex);
-			usbmuxd_log(LL_WARNING, "Attempted to abort for nonexistent connection for device %d", device_id);
-			return;
-		}
-	} ENDFOREACH
-	pthread_mutex_unlock(&device_list_mutex);
-	usbmuxd_log(LL_WARNING, "Attempted to abort connection for nonexistent device %d", device_id);
+  struct mux_connection *conn = get_mux_connection(device_id, client);
+	if (conn) {
+		connection_teardown(conn);
+	} else {
+		usbmuxd_log(LL_WARNING, "Attempted to abort for nonexistent connection for device %d", device_id);
+	}
 }
 
 static void device_version_input(struct mux_device *dev, struct version_header *vh)
@@ -462,7 +535,7 @@ static void device_version_input(struct mux_device *dev, struct version_header *
 	}
 	vh->major = ntohl(vh->major);
 	vh->minor = ntohl(vh->minor);
-	if(vh->major != 1 || vh->minor != 0) {
+	if(vh->major != 2 && vh->major != 1) {
 		usbmuxd_log(LL_ERROR, "Device %d has unknown version %d.%d", dev->id, vh->major, vh->minor);
 		pthread_mutex_lock(&device_list_mutex);
 		collection_remove(&device_list, dev);
@@ -470,7 +543,13 @@ static void device_version_input(struct mux_device *dev, struct version_header *
 		free(dev);
 		return;
 	}
-	usbmuxd_log(LL_NOTICE, "Connected to v%d.%d device %d on location 0x%x with serial number %s", vh->major, vh->minor, dev->id, usb_get_location(dev->usbdev), usb_get_serial(dev->usbdev));
+	dev->version = vh->major;
+
+	if (dev->version >= 2) {
+		send_packet(dev, MUX_PROTO_SETUP, NULL, "\x07", 1);
+	}
+
+	usbmuxd_log(LL_NOTICE, "Connected to v%d.%d device %d on location 0x%x with serial number %s", dev->version, vh->minor, dev->id, usb_get_location(dev->usbdev), usb_get_serial(dev->usbdev));
 	dev->state = MUXDEV_ACTIVE;
 	collection_init(&dev->connections);
 	struct device_info info;
@@ -481,6 +560,46 @@ static void device_version_input(struct mux_device *dev, struct version_header *
 	preflight_worker_device_add(&info);
 }
 
+static void device_control_input(struct mux_device *dev, unsigned char *payload, uint32_t payload_length)
+{
+	if (payload_length > 0) {
+		switch (payload[0]) {
+		case 3:
+			if (payload_length > 1) {
+				char* buf = malloc(payload_length);
+				strncpy(buf, (char*)payload+1, payload_length-1);
+				buf[payload_length-1] = '\0';
+				usbmuxd_log(LL_ERROR, "%s: ERROR: %s", __func__, buf);
+				free(buf);
+			} else {
+				usbmuxd_log(LL_ERROR, "%s: Error occured, but empty error message", __func__);
+			}
+			break;
+		case 7:
+			if (payload_length > 1) {
+				char* buf = malloc(payload_length);
+				strncpy(buf, (char*)payload+1, payload_length-1);
+				buf[payload_length-1] = '\0';
+				usbmuxd_log(LL_INFO, "%s: %s", __func__, buf);
+				free(buf);
+			}
+			break;
+		default:
+			break;
+		}
+	} else {
+		usbmuxd_log(LL_WARNING, "%s: got a type 1 packet without payload", __func__);
+	}
+}
+
+/**
+ * Handle an incoming TCP packet from the device.
+ *
+ * @param dev The device handle TCP input on.
+ * @param th Pointer to the TCP header struct.
+ * @param payload Payload data.
+ * @param payload_length Number of bytes in payload.
+ */
 static void device_tcp_input(struct mux_device *dev, struct tcphdr *th, unsigned char *payload, uint32_t payload_length)
 {
 	uint16_t sport = ntohs(th->th_dport);
@@ -495,6 +614,7 @@ static void device_tcp_input(struct mux_device *dev, struct tcphdr *th, unsigned
 		return;
 	}
 
+	// Find the connection on this device that has the right sport and dport
 	FOREACH(struct mux_connection *lconn, &dev->connections) {
 		if(lconn->sport == sport && lconn->dport == dport) {
 			conn = lconn;
@@ -555,10 +675,21 @@ static void device_tcp_input(struct mux_device *dev, struct tcphdr *th, unsigned
 			connection_teardown(conn);
 		} else {
 			connection_device_input(conn, payload, payload_length);
+
+			// Device likes it best when we are prompty ACKing data
+			send_tcp_ack(conn);
 		}
 	}
 }
 
+/**
+ * Take input data from the device that has been read into a buffer
+ * and dispatch it to the right protocol backend (eg. TCP).
+ *
+ * @param usbdev
+ * @param buffer
+ * @param length
+ */
 void device_data_input(struct usb_device *usbdev, unsigned char *buffer, uint32_t length)
 {
 	struct mux_device *dev = NULL;
@@ -593,7 +724,7 @@ void device_data_input(struct usb_device *usbdev, unsigned char *buffer, uint32_
 			dev->pktlen = 0;
 			return;
 		}
-		memcpy(dev->pktbuf + dev->pktlen, buffer, length);
+        memcpy(dev->pktbuf + dev->pktlen, buffer, length);
 		struct mux_header *mhdr = (struct mux_header *)dev->pktbuf;
 		if((length < USB_MRU) || (ntohl(mhdr->length) == (length + dev->pktlen))) {
 			buffer = dev->pktbuf;
@@ -616,7 +747,7 @@ void device_data_input(struct usb_device *usbdev, unsigned char *buffer, uint32_
 	}
 
 	struct mux_header *mhdr = (struct mux_header *)buffer;
-
+	int mux_header_size = ((dev->version < 2) ? 8 : sizeof(struct mux_header));
 	if(ntohl(mhdr->length) != length) {
 		usbmuxd_log(LL_ERROR, "Incoming packet size mismatch (dev %d, expected %d, got %d)", dev->id, ntohl(mhdr->length), length);
 		return;
@@ -626,23 +757,32 @@ void device_data_input(struct usb_device *usbdev, unsigned char *buffer, uint32_
 	unsigned char *payload;
 	uint32_t payload_length;
 
+	if (dev->version >= 2) {
+		dev->rx_seq = ntohs(mhdr->rx_seq);
+	}
+
 	switch(ntohl(mhdr->protocol)) {
 		case MUX_PROTO_VERSION:
-			if(length < (sizeof(struct mux_header) + sizeof(struct version_header))) {
+			if(length < (mux_header_size + sizeof(struct version_header))) {
 				usbmuxd_log(LL_ERROR, "Incoming version packet is too small (%d)", length);
 				return;
 			}
-			device_version_input(dev, (struct version_header *)(mhdr+1));
+			device_version_input(dev, (struct version_header *)((char*)mhdr+mux_header_size));
+			break;
+		case MUX_PROTO_CONTROL:
+			payload = (unsigned char *)(mhdr+1);
+			payload_length = length - mux_header_size;
+			device_control_input(dev, payload, payload_length);
 			break;
 		case MUX_PROTO_TCP:
-			if(length < (sizeof(struct mux_header) + sizeof(struct tcphdr))) {
+			if(length < (mux_header_size + sizeof(struct tcphdr))) {
 				usbmuxd_log(LL_ERROR, "Incoming TCP packet is too small (%d)", length);
 				return;
 			}
-			th = (struct tcphdr *)(mhdr+1);
+			th = (struct tcphdr *)((char*)mhdr+mux_header_size);
 			payload = (unsigned char *)(th+1);
-			payload_length = length - sizeof(struct tcphdr) - sizeof(struct mux_header);
-			device_tcp_input(dev, (struct tcphdr *)(mhdr+1), payload, payload_length);
+			payload_length = length - sizeof(struct tcphdr) - mux_header_size;
+			device_tcp_input(dev, th, payload, payload_length);
 			break;
 		default:
 			usbmuxd_log(LL_ERROR, "Incoming packet for device %d has unknown protocol 0x%x)", dev->id, ntohl(mhdr->protocol));
@@ -666,8 +806,9 @@ int device_add(struct usb_device *usbdev)
 	dev->pktbuf = malloc(DEV_MRU);
 	dev->pktlen = 0;
 	dev->preflight_cb_data = NULL;
+	dev->version = 0;
 	struct version_header vh;
-	vh.major = htonl(1);
+	vh.major = htonl(2);
 	vh.minor = htonl(0);
 	vh.padding = 0;
 	if((res = send_packet(dev, MUX_PROTO_VERSION, &vh, NULL, 0)) < 0) {
@@ -810,10 +951,7 @@ void device_check_timeouts(void)
 						(conn->flags & CONN_ACK_PENDING) && 
 						(ct - conn->last_ack_time) > ACK_TIMEOUT) {
 					usbmuxd_log(LL_DEBUG, "Sending ACK due to expired timeout (%" PRIu64 " -> %" PRIu64 ")", conn->last_ack_time, ct);
-					if(send_tcp(conn, TH_ACK, NULL, 0) < 0) {
-						usbmuxd_log(LL_ERROR, "Error sending TCP ACK to device %d (%d->%d)", dev->id, conn->sport, conn->dport);
-						connection_teardown(conn);
-					}
+					send_tcp_ack(conn);
 				}
 			} ENDFOREACH
 		}

@@ -71,6 +71,14 @@ struct mux_client {
 static struct collection client_list;
 pthread_mutex_t client_list_mutex;
 
+/**
+ * Receive raw data from the client socket.
+ *
+ * @param client Client to read from.
+ * @param buffer Buffer to store incoming data.
+ * @param len Max number of bytes to read.
+ * @return Same as recv() system call. Number of bytes read; when < 0 errno will be set.
+ */
 int client_read(struct mux_client *client, void *buffer, uint32_t len)
 {
 	usbmuxd_log(LL_SPEW, "client_read fd %d buf %p len %d", client->fd, buffer, len);
@@ -81,6 +89,14 @@ int client_read(struct mux_client *client, void *buffer, uint32_t len)
 	return recv(client->fd, buffer, len, 0);
 }
 
+/**
+ * Send raw data to the client socket.
+ *
+ * @param client Client to send to.
+ * @param buffer The data to send.
+ * @param len Number of bytes to write.
+ * @return Same as system call send(). Number of bytes written; when < 0 errno will be set.
+ */
 int client_write(struct mux_client *client, void *buffer, uint32_t len)
 {
 	usbmuxd_log(LL_SPEW, "client_write fd %d buf %p len %d", client->fd, buffer, len);
@@ -91,6 +107,16 @@ int client_write(struct mux_client *client, void *buffer, uint32_t len)
 	return send(client->fd, buffer, len, 0);
 }
 
+/**
+ * Set event mask to use for ppoll()ing the client socket.
+ * Typically POLLOUT and/or POLLIN. Note that this overrides
+ * the current mask, that is, it is not ORing the argument
+ * into the current mask.
+ *
+ * @param client The client to set the event mask on.
+ * @param events The event mask to sert.
+ * @return 0 on success, -1 on error.
+ */
 int client_set_events(struct mux_client *client, short events)
 {
 	if((client->state != CLIENT_CONNECTED) && (client->state != CLIENT_CONNECTING2)) {
@@ -103,6 +129,15 @@ int client_set_events(struct mux_client *client, short events)
 	return 0;
 }
 
+/**
+ * Wait for an inbound connection on the usbmuxd socket
+ * and create a new mux_client instance for it, and store
+ * the client in the client list.
+ *
+ * @param listenfd the socket fd to accept() on.
+ * @return The connection fd for the client, or < 0 for error
+ *   in which case errno will be set.
+ */
 int client_accept(int listenfd)
 {
 	struct sockaddr_un addr;
@@ -216,8 +251,8 @@ static int send_result(struct mux_client *client, uint32_t tag, uint32_t result)
 	if (client->proto_version == 1) {
 		/* XML plist packet */
 		plist_t dict = plist_new_dict();
-		plist_dict_insert_item(dict, "MessageType", plist_new_string("Result"));
-		plist_dict_insert_item(dict, "Number", plist_new_uint(result));
+		plist_dict_set_item(dict, "MessageType", plist_new_string("Result"));
+		plist_dict_set_item(dict, "Number", plist_new_uint(result));
 		res = send_plist_pkt(client, tag, dict);
 		plist_free(dict);
 	} else {
@@ -253,17 +288,17 @@ int client_notify_connect(struct mux_client *client, enum usbmuxd_result result)
 static plist_t create_device_attached_plist(struct device_info *dev)
 {
 	plist_t dict = plist_new_dict();
-	plist_dict_insert_item(dict, "MessageType", plist_new_string("Attached"));
-	plist_dict_insert_item(dict, "DeviceID", plist_new_uint(dev->id));
+	plist_dict_set_item(dict, "MessageType", plist_new_string("Attached"));
+	plist_dict_set_item(dict, "DeviceID", plist_new_uint(dev->id));
 	plist_t props = plist_new_dict();
 	// TODO: get current usb speed
-	plist_dict_insert_item(props, "ConnectionSpeed", plist_new_uint(480000000));
-	plist_dict_insert_item(props, "ConnectionType", plist_new_string("USB"));
-	plist_dict_insert_item(props, "DeviceID", plist_new_uint(dev->id));
-	plist_dict_insert_item(props, "LocationID", plist_new_uint(dev->location));
-	plist_dict_insert_item(props, "ProductID", plist_new_uint(dev->pid));
-	plist_dict_insert_item(props, "SerialNumber", plist_new_string(dev->serial));
-	plist_dict_insert_item(dict, "Properties", props);
+	plist_dict_set_item(props, "ConnectionSpeed", plist_new_uint(480000000));
+	plist_dict_set_item(props, "ConnectionType", plist_new_string("USB"));
+	plist_dict_set_item(props, "DeviceID", plist_new_uint(dev->id));
+	plist_dict_set_item(props, "LocationID", plist_new_uint(dev->location));
+	plist_dict_set_item(props, "ProductID", plist_new_uint(dev->pid));
+	plist_dict_set_item(props, "SerialNumber", plist_new_string(dev->serial));
+	plist_dict_set_item(dict, "Properties", props);
 	return dict;
 }
 
@@ -288,7 +323,7 @@ static int send_device_list(struct mux_client *client, uint32_t tag)
 	if (devs)
 		free(devs);
 
-	plist_dict_insert_item(dict, "DeviceList", devices);
+	plist_dict_set_item(dict, "DeviceList", devices);
 	res = send_plist_pkt(client, tag, dict);
 	plist_free(dict);
 	return res;
@@ -302,7 +337,7 @@ static int send_system_buid(struct mux_client *client, uint32_t tag)
 	config_get_system_buid(&buid);
 
 	plist_t dict = plist_new_dict();
-	plist_dict_insert_item(dict, "BUID", plist_new_string(buid));
+	plist_dict_set_item(dict, "BUID", plist_new_string(buid));
 	res = send_plist_pkt(client, tag, dict);
 	plist_free(dict);
 	return res;
@@ -322,7 +357,7 @@ static int send_pair_record(struct mux_client *client, uint32_t tag, const char*
 	
 	if (record_data) {
 		plist_t dict = plist_new_dict();
-		plist_dict_insert_item(dict, "PairRecordData", plist_new_data(record_data, record_size));
+		plist_dict_set_item(dict, "PairRecordData", plist_new_data(record_data, record_size));
 		free(record_data);
 		res = send_plist_pkt(client, tag, dict);
 		plist_free(dict);
@@ -360,8 +395,8 @@ static int notify_device_remove(struct mux_client *client, uint32_t device_id)
 	if (client->proto_version == 1) {
 		/* XML plist packet */
 		plist_t dict = plist_new_dict();
-		plist_dict_insert_item(dict, "MessageType", plist_new_string("Detached"));
-		plist_dict_insert_item(dict, "DeviceID", plist_new_uint(device_id));
+		plist_dict_set_item(dict, "MessageType", plist_new_string("Detached"));
+		plist_dict_set_item(dict, "DeviceID", plist_new_uint(device_id));
 		res = send_plist_pkt(client, 0, dict);
 		plist_free(dict);
 	} else {
@@ -441,6 +476,11 @@ static int client_command(struct mux_client *client, struct usbmuxd_header *hdr)
 			} else {
 				char *message = NULL;
 				plist_t node = plist_dict_get_item(dict, "MessageType");
+				if (!node || plist_get_node_type(node) != PLIST_STRING) {
+					usbmuxd_log(LL_ERROR, "Could not read valid MessageType node from plist!");
+					plist_free(dict);
+					return -1;
+				}
 				plist_get_string_val(node, &message);
 				if (!message) {
 					usbmuxd_log(LL_ERROR, "Could not extract MessageType from plist!");

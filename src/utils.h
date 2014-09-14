@@ -20,8 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
 
-#ifndef __UTILS_H__
-#define __UTILS_H__
+#ifndef UTILS_H
+#define UTILS_H
 
 #include <poll.h>
 #include <plist/plist.h>
@@ -86,5 +86,7 @@ enum plist_format_t {
 
 int plist_read_from_filename(plist_t *plist, const char *filename);
 int plist_write_to_filename(plist_t plist, const char *filename, enum plist_format_t format);
+
+uint64_t mstime64(void);
 
 #endif

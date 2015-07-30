@@ -1,27 +1,28 @@
 /*
-	usbmuxd - iPhone/iPod Touch USB multiplex server daemon
-
-Copyright (C) 2009	Hector Martin "marcan" <hector@marcansoft.com>
-Copyright (C) 2009	Nikias Bassen <nikias@gmx.li>
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 or version 3.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-
-*/
+ * client.c
+ *
+ * Copyright (C) 2009 Hector Martin <hector@marcansoft.com>
+ * Copyright (C) 2009 Nikias Bassen <nikias@gmx.li>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 or version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+
+#define _GNU_SOURCE 1
 
 #include <stdlib.h>
 #include <string.h>
@@ -32,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <sys/un.h>
 #include <arpa/inet.h>
 #include <pthread.h>
+#include <fcntl.h>
 
 #include <plist/plist.h>
 
@@ -99,12 +101,23 @@ int client_read(struct mux_client *client, void *buffer, uint32_t len)
  */
 int client_write(struct mux_client *client, void *buffer, uint32_t len)
 {
+	int sret = -1;
+
 	usbmuxd_log(LL_SPEW, "client_write fd %d buf %p len %d", client->fd, buffer, len);
 	if(client->state != CLIENT_CONNECTED) {
 		usbmuxd_log(LL_ERROR, "Attempted to write to client %d not in CONNECTED state", client->fd);
 		return -1;
 	}
-	return send(client->fd, buffer, len, 0);
+
+	sret = send(client->fd, buffer, len, 0);
+	if (sret < 0) {
+		if ((errno == EAGAIN) || (errno == EWOULDBLOCK)) {
+			usbmuxd_log(LL_ERROR, "ERROR: client_write: fd %d not ready for writing", client->fd);
+		} else {
+			usbmuxd_log(LL_ERROR, "ERROR: client_write: sending to fd %d failed: %s", client->fd, strerror(errno));
+		}
+	}
+	return sret;
 }
 
 /**
@@ -149,6 +162,15 @@ int client_accept(int listenfd)
 		return cfd;
 	}
 
+	int flags = fcntl(cfd, F_GETFL, 0);
+	if (flags < 0) {
+		usbmuxd_log(LL_ERROR, "ERROR: Could not get socket flags!");
+	} else {
+		if (fcntl(cfd, F_SETFL, flags | O_NONBLOCK) < 0) {
+			usbmuxd_log(LL_ERROR, "ERROR: Could not set socket to non-blocking mode");
+		}
+	}
+
 	struct mux_client *client;
 	client = malloc(sizeof(struct mux_client));
 	memset(client, 0, sizeof(struct mux_client));
@@ -167,7 +189,21 @@ int client_accept(int listenfd)
 	collection_add(&client_list, client);
 	pthread_mutex_unlock(&client_list_mutex);
 
+#ifdef SO_PEERCRED
+	if (log_level >= LL_INFO) {
+		struct ucred cr;
+		len = sizeof(struct ucred);
+		getsockopt(cfd, SOL_SOCKET, SO_PEERCRED, &cr, &len);
+
+		if (getpid() == cr.pid) {
+			usbmuxd_log(LL_INFO, "New client on fd %d (self)", client->fd);
+		} else {
+			usbmuxd_log(LL_INFO, "New client on fd %d (pid %d)", client->fd, cr.pid);
+		}
+	}
+#else
 	usbmuxd_log(LL_INFO, "New client on fd %d", client->fd);
+#endif
 	return client->fd;
 }
 
@@ -216,7 +252,7 @@ static int send_pkt(struct mux_client *client, uint32_t tag, enum usbmuxd_msgtyp
 		usbmuxd_log(LL_DEBUG, "%s: Enlarging client %d output buffer %d -> %d", __func__, client->fd, client->ob_capacity, new_size);
 		new_buf = realloc(client->ob_buf, new_size);
 		if (!new_buf) {
-			usbmuxd_log(LL_FATAL, "%s: Failed to realloc.\n", __func__);
+			usbmuxd_log(LL_FATAL, "%s: Failed to realloc.", __func__);
 			return -1;
 		}
 		client->ob_buf = new_buf;
@@ -291,8 +327,7 @@ static plist_t create_device_attached_plist(struct device_info *dev)
 	plist_dict_set_item(dict, "MessageType", plist_new_string("Attached"));
 	plist_dict_set_item(dict, "DeviceID", plist_new_uint(dev->id));
 	plist_t props = plist_new_dict();
-	// TODO: get current usb speed
-	plist_dict_set_item(props, "ConnectionSpeed", plist_new_uint(480000000));
+	plist_dict_set_item(props, "ConnectionSpeed", plist_new_uint(dev->speed));
 	plist_dict_set_item(props, "ConnectionType", plist_new_string("USB"));
 	plist_dict_set_item(props, "DeviceID", plist_new_uint(dev->id));
 	plist_dict_set_item(props, "LocationID", plist_new_uint(dev->location));

@@ -31,7 +31,7 @@
 		969B5092129CAD85006DDD4D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1007BB0C01007BB0C01007BB /* utils.c */; };
 		969D0322189B12DF0098CD4E /* conf.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D031E189B12DF0098CD4E /* conf.c */; };
 		969D0326189B3CB30098CD4E /* preflight.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0324189B3CB30098CD4E /* preflight.c */; };
-		969D0328189B3D9F0098CD4E /* usb-linux.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0327189B3D9F0098CD4E /* usb-linux.c */; };
+		969D0328189B3D9F0098CD4E /* usb.c in Sources */ = {isa = PBXBuildFile; fileRef = 969D0327189B3D9F0098CD4E /* usb.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,7 @@
 		969D0323189B14B20098CD4E /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
 		969D0324189B3CB30098CD4E /* preflight.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = preflight.c; path = src/preflight.c; sourceTree = "<group>"; };
 		969D0325189B3CB30098CD4E /* preflight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = preflight.h; path = src/preflight.h; sourceTree = "<group>"; };
-		969D0327189B3D9F0098CD4E /* usb-linux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "usb-linux.c"; path = "src/usb-linux.c"; sourceTree = "<group>"; };
+		969D0327189B3D9F0098CD4E /* usb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = usb.c; path = src/usb.c; sourceTree = "<group>"; };
 		969D0329189B3EFB0098CD4E /* usb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = usb.h; path = src/usb.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,7 +108,7 @@
 				969D0324189B3CB30098CD4E /* preflight.c */,
 				969D0325189B3CB30098CD4E /* preflight.h */,
 				969D0329189B3EFB0098CD4E /* usb.h */,
-				969D0327189B3D9F0098CD4E /* usb-linux.c */,
+				969D0327189B3D9F0098CD4E /* usb.c */,
 				969D031C189B119F0098CD4E /* utils.h */,
 				1007BB0C01007BB0C01007BB /* utils.c */,
 				1007CBD001007CBD001007CB /* main.c */,
@@ -192,7 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				969B5092129CAD85006DDD4D /* utils.c in Sources */,
-				969D0328189B3D9F0098CD4E /* usb-linux.c in Sources */,
+				969D0328189B3D9F0098CD4E /* usb.c in Sources */,
 				969D0326189B3CB30098CD4E /* preflight.c in Sources */,
 				1007CDDD01007CDDD01007CD /* log.c in Sources */,
 				1007CF9B01007CF9B01007CF /* device.c in Sources */,

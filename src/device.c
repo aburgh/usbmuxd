@@ -1,23 +1,22 @@
 /*
-	usbmuxd - iPhone/iPod Touch USB multiplex server daemon
-
-Copyright (C) 2009	Hector Martin "marcan" <hector@marcansoft.com>
-Copyright (C) 2014  Mikkel Kamstrup Erlandsen <mikkel.kamstrup@xamarin.com>
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 or version 3.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-
-*/
+ * device.c
+ *
+ * Copyright (C) 2009 Hector Martin "marcan" <hector@marcansoft.com>
+ * Copyright (C) 2014 Mikkel Kamstrup Erlandsen <mikkel.kamstrup@xamarin.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 or version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 
 #define _BSD_SOURCE
 
@@ -300,6 +299,7 @@ static int send_tcp(struct mux_connection *conn, uint8_t flags, const unsigned c
 static void connection_teardown(struct mux_connection *conn)
 {
 	int res;
+	int size;
 	if(conn->state == CONN_DEAD)
 		return;
 	usbmuxd_log(LL_DEBUG, "connection_teardown dev %d sport %d dport %d", conn->dev->id, conn->sport, conn->dport);
@@ -313,6 +313,21 @@ static void connection_teardown(struct mux_connection *conn)
 			client_notify_connect(conn->client, RESULT_CONNREFUSED);
 		} else {
 			conn->state = CONN_DEAD;
+			if((conn->events & POLLOUT) && conn->ib_size > 0){
+				while(1){
+					size = client_write(conn->client, conn->ib_buf, conn->ib_size);
+					if(size <= 0) {
+						break;
+					}
+					if(size == (int)conn->ib_size) {
+						conn->ib_size = 0;
+						break;
+					} else {
+						conn->ib_size -= size;
+						memmove(conn->ib_buf, conn->ib_buf + size, conn->ib_size);
+					}
+				}
+			}
 			client_close(conn->client);
 		}
 	}
@@ -557,6 +572,7 @@ static void device_version_input(struct mux_device *dev, struct version_header *
 	info.location = usb_get_location(dev->usbdev);
 	info.serial = usb_get_serial(dev->usbdev);
 	info.pid = usb_get_pid(dev->usbdev);
+	info.speed = usb_get_speed(dev->usbdev);
 	preflight_worker_device_add(&info);
 }
 
@@ -909,6 +925,7 @@ int device_get_list(int include_hidden, struct device_info **devices)
 			p->serial = usb_get_serial(dev->usbdev);
 			p->location = usb_get_location(dev->usbdev);
 			p->pid = usb_get_pid(dev->usbdev);
+			p->speed = usb_get_speed(dev->usbdev);
 			count++;
 			p++;
 		}

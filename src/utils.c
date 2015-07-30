@@ -1,25 +1,24 @@
 /*
-	usbmuxd - iPhone/iPod Touch USB multiplex server daemon
-
-Copyright (C) 2009	Hector Martin "marcan" <hector@marcansoft.com>
-Copyright (C) 2009	Nikias Bassen <nikias@gmx.li>
-Copyright (c) 2013	Federico Mena Quintero
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU Lesser General Public License as
-published by the Free Software Foundation, either version 2.1 of the
-License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-
-*/
+ * utils.c
+ *
+ * Copyright (C) 2009 Hector Martin <hector@marcansoft.com>
+ * Copyright (C) 2009 Nikias Bassen <nikias@gmx.li>
+ * Copyright (c) 2013 Federico Mena Quintero
+ *
+ * This library is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 2.1 of the
+ * License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -29,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
+#include <time.h>
 #include <sys/time.h>
 
 #include "utils.h"
@@ -299,15 +299,26 @@ int plist_write_to_filename(plist_t plist, const char *filename, enum plist_form
 	return 1;
 }
 
+void get_tick_count(struct timeval * tv)
+{
+	struct timespec ts;
+	if(0 == clock_gettime(CLOCK_MONOTONIC, &ts)) {
+		tv->tv_sec = ts.tv_sec;
+		tv->tv_usec = ts.tv_nsec / 1000;
+	} else {
+		gettimeofday(tv, NULL);
+	}
+}
+
 /**
  * Get number of milliseconds since the epoch.
  */
 uint64_t mstime64(void)
 {
 	struct timeval tv;
-	gettimeofday(&tv, NULL);
+	get_tick_count(&tv);
 
-  // Careful, avoid overflow on 32 bit systems
-  // time_t could be 4 bytes
+	// Careful, avoid overflow on 32 bit systems
+	// time_t could be 4 bytes
 	return ((long long)tv.tv_sec) * 1000LL + ((long long)tv.tv_usec) / 1000LL;
 }

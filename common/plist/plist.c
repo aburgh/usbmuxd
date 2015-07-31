@@ -185,6 +185,8 @@ plist_t plist_copy(plist_t node)
  */
 uint32_t plist_array_get_size(plist_t node)
 {
+	assert(CFGetTypeID(node) == CFArrayGetTypeID());
+
 	return CFArrayGetCount(node);
 }
 
@@ -197,6 +199,8 @@ uint32_t plist_array_get_size(plist_t node)
  */
 plist_t plist_array_get_item(plist_t node, uint32_t n)
 {
+	assert(CFGetTypeID(node) == CFArrayGetTypeID());
+
 	return CFArrayGetValueAtIndex(node, n);
 }
 
@@ -223,6 +227,8 @@ uint32_t plist_array_get_item_index(plist_t node)
  */
 void plist_array_set_item(plist_t node, plist_t item, uint32_t n)
 {
+	assert(CFGetTypeID(node) == CFArrayGetTypeID());
+
 	CFArraySetValueAtIndex((CFMutableArrayRef) node, n, item);
 	CFRelease(item);
 }
@@ -235,6 +241,8 @@ void plist_array_set_item(plist_t node, plist_t item, uint32_t n)
  */
 void plist_array_append_item(plist_t node, plist_t item)
 {
+	assert(CFGetTypeID(node) == CFArrayGetTypeID());
+
 	CFArrayAppendValue((CFMutableArrayRef) node, item);
 	CFRelease(item);
 }
@@ -248,6 +256,8 @@ void plist_array_append_item(plist_t node, plist_t item)
  */
 void plist_array_insert_item(plist_t node, plist_t item, uint32_t n)
 {
+	assert(CFGetTypeID(node) == CFArrayGetTypeID());
+
 	CFArrayInsertValueAtIndex((CFMutableArrayRef) node, n, item);
 	CFRelease(item);
 }
@@ -261,6 +271,8 @@ void plist_array_insert_item(plist_t node, plist_t item, uint32_t n)
  */
 void plist_array_remove_item(plist_t node, uint32_t n)
 {
+	assert(CFGetTypeID(node) == CFArrayGetTypeID());
+
 	CFArrayRemoveValueAtIndex((CFMutableArrayRef) node, n);
 }
 
@@ -379,6 +391,8 @@ void plist_dict_get_item_key(plist_t node, char **key)
  */
 plist_t plist_dict_get_item(plist_t node, const char* key)
 {
+	assert(CFGetTypeID(node) == CFDictionaryGetTypeID());
+
 	CFDictionaryRef retval = NULL;
 	
 	CFStringRef keyRef = CFStringCreateWithBytesNoCopy(kCFAllocatorDefault, (UInt8 *)key, strlen(key), kCFStringEncodingUTF8, FALSE, kCFAllocatorNull);
@@ -399,6 +413,8 @@ plist_t plist_dict_get_item(plist_t node, const char* key)
  */
 void plist_dict_set_item(plist_t node, const char* key, plist_t item)
 {
+	assert(CFGetTypeID(node) == CFDictionaryGetTypeID());
+
 	// Do not use "...NoCopy" because the key is added to the node
 	CFStringRef keyRef = CFStringCreateWithBytes(kCFAllocatorDefault, (UInt8 *)key, strlen(key), kCFStringEncodingUTF8, FALSE);
 	if (keyRef) {
@@ -417,6 +433,8 @@ void plist_dict_set_item(plist_t node, const char* key, plist_t item)
  */
 void plist_dict_insert_item(plist_t node, const char* key, plist_t item)
 {
+	assert(CFGetTypeID(node) == CFDictionaryGetTypeID());
+
 	// Do not use "...NoCopy" because the key is added to the node
 	CFStringRef keyRef = CFStringCreateWithBytes(kCFAllocatorDefault, (UInt8 *)key, strlen(key), kCFStringEncodingUTF8, FALSE);
 	if (keyRef) {
